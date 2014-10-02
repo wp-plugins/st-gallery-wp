@@ -2121,7 +2121,7 @@ class StGallery{
 						</li>
 						<li>
 							<?php add_thickbox(); ?>
-							<a href="<?php echo plugins_url( '/doc/index.html', __FILE__ ); ?>?TB_iframe=true&width=1000&height=600" class="thickbox"><?php _e('Document', 'st-gallery'); ?></a>
+							<a href="http://beautiful-templates.com/document/st-gallery-wp/index.html?TB_iframe=true&width=1000&height=600" class="thickbox"><?php _e('Document', 'st-gallery'); ?></a>
 						</li>
 					</ul>
 				</div>
