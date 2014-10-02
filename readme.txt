@@ -27,10 +27,10 @@ ST Gallery WP is an advanced plugin with a list of themes and options for create
 - Import & Export gallery easy...
 
 == Installation ==
-Step 1: Upload the entire \"st-gallery-wp\" folder to the \"/wp-content/plugins/\" directory.
-Step 2: Activate the plugin through the \"Plugins\" menu in WordPress.
+Step 1: Upload the entire "st-gallery-wp" folder to the "wp-content/plugins/" directory.
+Step 2: Activate the plugin through the "Plugins" menu in WordPress.
 
-You will find \"ST Gallery WP\" menu in your WordPress admin panel.
+You will find "ST Gallery WP" menu in your WordPress admin panel.
 
 == Screenshots ==
 
