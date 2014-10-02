@@ -1,5 +1,5 @@
 === ST Gallery WP ===
-Contributors: Beautiful Templates
+Contributors: beautifultemplates
 Tags: gallery, slider, slideshow, galleria, skitter
 Donate link: http://beautiful-templates.com
 Requires at least: 4.0
@@ -33,10 +33,7 @@ Step 2: Activate the plugin through the \"Plugins\" menu in WordPress.
 You will find \"ST Gallery WP\" menu in your WordPress admin panel.
 
 == Screenshots ==
-1. link1.
-2. link2.
-3. link3.
 
 == Changelog ==
-= 1.0 =
+= 1.0.0 =
 * Initial release.
