@@ -20,7 +20,7 @@
 		            	type: 'listbox', 
 		            	name: 'galleryID', 
 		            	label: 'Select Gallery: ', 
-		            	'values': shortcodeValues
+		            	'values': shortcodeValues,
 		        	}],
         			onsubmit: function( e ) {
             			editor.insertContent( '[st-gallery id="' + e.data.galleryID + '"]');

@@ -776,3 +776,12 @@
 	border-radius: 0;
 	height: 2px;
 }
+
+
+
+.st-skitter.round, 
+.st-skitter.square,
+.st-skitter.minimalist,
+.st-skitter.default {
+	padding-bottom: 50px;
+}

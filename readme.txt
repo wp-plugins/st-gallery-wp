@@ -4,7 +4,7 @@ Tags: gallery, slider, slideshow, galleria, skitter
 Donate link: http://beautiful-templates.com
 Requires at least: 4.0
 Tested up to: 4.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,13 +27,36 @@ ST Gallery WP is an advanced plugin with a list of themes and options for create
 - Import & Export gallery easy...
 
 == Installation ==
-Step 1: Upload the entire "st-gallery-wp" folder to the "wp-content/plugins/" directory.
-Step 2: Activate the plugin through the "Plugins" menu in WordPress.
+1. Upload the entire "st-gallery-wp" folder to the "wp-content/plugins/" directory.
+2. Activate the plugin through the "Plugins" menu in WordPress.
 
 You will find "ST Gallery WP" menu in your WordPress admin panel.
 
 == Screenshots ==
+1. /assets/screenshot-1.png
+2. /assets/screenshot-2.png
+3. /assets/screenshot-3.png
+4. /assets/screenshot-4.png
+5. /assets/screenshot-5.png
+6. /assets/screenshot-6.png
+7. /assets/screenshot-7.png
+8. /assets/screenshot-8.png
+9. /assets/screenshot-9.png
+10. /assets/screenshot-10.png
 
 == Changelog ==
+= 1.0.1 =
+* Add new 7 sample gallery.
+* Update control style for gallery theme "classic" and "Style 2"
+* Add new responsive setting for gallery
+
+= 1.0.0 =
+* Initial release.
+
+
+== Upgrade Notice ==
+= 1.0.1 =
+Upgrade new control style and sample gallery, add responsive setting
+
 = 1.0.0 =
 * Initial release.

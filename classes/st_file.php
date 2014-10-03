@@ -1,7 +1,7 @@
 <?php
 /**
- * Version: 1.0
- * Author: Khoapq
+ * Version: 1.0.1
+ * Author: beautifultemplates
  * Author URI: http://www.beautiful-templates.com/
  * Classname: ST_File
  */

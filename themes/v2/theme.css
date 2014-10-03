@@ -2,7 +2,7 @@
 Plugin Name: ST Galleria
 Plugin URI: http://beautiful-templates.com
 Description: Create gallery from your image post with Galleria library & Skitter.
-Version: 1.0.0
+Version: 1.0.1
 Author: Beautiful Templates
 Author URI: http://beautiful-templates.com
 License:  GPL2
@@ -238,10 +238,22 @@ License:  GPL2
 .v2 .galleria-container.videoplay .galleria-counter{ display:none!important; }
 .v2 #st-gallery-control {
 	overflow: hidden;
-	position: relative;
+	position: absolute;
 	width: 100%;
 	height: auto;
-	background: rgb(206, 206, 206);
+	background: transparent;
+	top: -20%;
+	z-index: 69;
+	transition: all 0.5s;
+}
+.v2:hover #st-gallery-control {
+	top: 35%;
+	transition: all 0.5s;
+	
+}
+.v2 .st-control-text li a:hover{
+	transition: all 0.5s;
+	opacity: 1;
 }
 .v2 .st-control-text {
 	overflow: hidden;
@@ -256,11 +268,7 @@ License:  GPL2
 	padding: 5px 10px;
 	margin: 0px;
 	border-radius: 3px;
-	transition: all 0.3s;
-}
-.v2 .st-control-text li a:hover {
-	background: rgb(70, 70, 70);
-	color: #fff;
+	opacity: 0.5;
 	transition: all 0.3s;
 }
 .v2 .st-control-text li {
@@ -272,8 +280,6 @@ License:  GPL2
 /**
  * 	Control CSS
  */
-.v2 .st-control-text li a.prev,
-.v2 .st-control-text li a.next,
 .v2 .st-control-text li a.action,
 .v2 .st-control-text li a.action.active,
 .v2 .st-control-text li a.full{
@@ -286,12 +292,6 @@ License:  GPL2
 	width: 35px;
 	height: 35px;
 	box-sizing: border-box;
-}
-.v2 .st-control-text li a.prev {
-	background-position: -492px 3px;
-}
-.v2 .st-control-text li a.next{
-	background-position: -570px 3px;
 }
 .v2 .st-control-text li a.action.active{
 	background-position: -888px 3px;

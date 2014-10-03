@@ -3,7 +3,7 @@
 Plugin: ST Galleria
 Plugin URL: http://beautiful-templates.com
 Description: Create gallery from your image post with Galleria library & Skitter.
-Version: 1.0.0
+Version: 1.0.1
 Author: Beautiful Templates
 Author URI: http://beautiful-templates.com
 License:  GPL2
@@ -473,7 +473,7 @@ class StGallery{
 		$gallery = $this->options[$id];
 		$newid = uniqid();
 		?>
-		<div class="st-skitter" id="<?= $newid ?>">
+		<div class="st-skitter <?php echo $this -> valString($gallery['skitter']['theme'], 'default') ?>" id="<?= $newid ?>">
 			<?php if ( is_super_admin()) { ?>
 				<div class="st-gallery-edit"><a href="<?= get_home_url() ?>/wp-admin/admin.php?page=st_gallery&action=edit&id=<?= $id ?>" class="edit-link"><?php _e('Edit Gallery', 'st-gallery'); ?></a></div>
 			<?php }	?>
@@ -592,7 +592,7 @@ class StGallery{
 		$gallery = $this->options[$id];
 		$newid = uniqid();
 		?>
-		<div class="st_gallery_wp st-gallery-wrapper <?=$gallery['gallery']['theme']?>">
+		<div class="st_gallery_wp st-gallery-wrapper <?=$gallery['gallery']['theme']?>" style="max-width: <?=$gallery['settings']['width'].$gallery['settings']['width_end'] ?>; ">
 				<?php if ( is_super_admin()) { ?>
 					<div class="st-gallery-edit"><a href="<?= get_home_url() ?>/wp-admin/admin.php?page=st_gallery&action=edit&id=<?= $id ?>" class="edit-link"><?php _e('Edit Gallery', 'st-gallery'); ?></a></div>
 				<?php }	?>
@@ -670,8 +670,6 @@ class StGallery{
 				<div id="st-gallery-control" style="max-width: <?=$gallery['settings']['width'].$gallery['settings']['width_end'] ?>;">
 					<ul class="st-control-text">
 						<li><a class="<?=$newid?> action" href="#"><?php _e('Play', 'st-gallery'); ?></a></li>
-						<li><a class="<?=$newid?> prev" href="#"><?php _e('Previous', 'st-gallery'); ?></a></li>
-						<li><a class="<?=$newid?> next" href="#"><?php _e('Next', 'st-gallery'); ?></a></li>
 						<li><a class="<?=$newid?> full" href="#"><?php _e('Fullscreen', 'st-gallery'); ?></a></li>
 					</ul>
 				</div>
@@ -714,14 +712,6 @@ class StGallery{
 								}
 								
 							});
-							$('.<?=$newid?>.prev').click(function() {
-								event.preventDefault();
-								gallery.prev();
-							});
-							$('.<?=$newid?>.next').click(function(event) {
-								event.preventDefault();
-								gallery.next();
-							});
 							$('.<?=$newid?>.full').click(function() {
 								event.preventDefault();
 								gallery.enterFullscreen();
@@ -737,7 +727,14 @@ class StGallery{
 						lightbox: 			<?php echo $this -> valBoolean($gallery['gallery']['lightbox']) ?>,
 						imagePan: 			<?php echo $this -> valBoolean($gallery['gallery']['imagePan']) ?>,
 						responsive: true,
-		    			height: 0.5,
+						height:				<?php
+												if (($this -> valBoolean($gallery['gallery']['responsive']))=='true'){
+													echo '0.5';
+												}else{
+													echo $this -> valInt($gallery['settings']['height']);
+												}
+						 					?>,
+						 					
 				});
 			});
 		})(jQuery);
@@ -995,6 +992,7 @@ class StGallery{
 											)
 										);
 								$this -> st_render_select('theme', __('Sets theme for gallery', 'st-gallery'), __('Theme:', 'st-gallery'), $theme);
+								$this -> st_render_radio('responsive', __('Responsive', 'st-gallery'), __('Responsive:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['responsive']));
 							?>
 						</div>
 					</div>
@@ -1449,6 +1447,7 @@ class StGallery{
 		$new_options_value[$id][gallery][show_title_image]		= 	$_POST['show_title_image'];
 		$new_options_value[$id][gallery][show_caption_image]	= 	$_POST['show_caption_image'];
 		$new_options_value[$id][gallery][theme] 				= 	$_POST['theme'];
+		$new_options_value[$id][gallery][responsive] 			= 	$_POST['responsive'];
 		//=========== Skitter Settings ===========//
 		$new_options_value[$id][skitter][auto_play]	 				= 	$_POST['skitter_auto_play'];
 		$new_options_value[$id][skitter][stop_over]					= 	$_POST['skitter_stop_over'];
@@ -1657,6 +1656,7 @@ class StGallery{
 										)
 									);
 							$this -> st_render_select('theme', __('Sets theme for gallery', 'st-gallery'), __('Theme:', 'st-gallery'), $theme);
+							$this -> st_render_radio('responsive', __('Responsive', 'st-gallery'), __('Responsive:', 'st-gallery'), true);
 						?>
 					</div>
 				</div>
@@ -2010,6 +2010,7 @@ class StGallery{
 		$new_options_value[$id][gallery][show_title_image]		= 	$_POST['show_title_image'];
 		$new_options_value[$id][gallery][show_caption_image]	= 	$_POST['show_caption_image'];
 		$new_options_value[$id][gallery][theme] 				= 	$_POST['theme'];
+		$new_options_value[$id][gallery][responsive] 			= 	$_POST['responsive'];
 		//=========== Skitter Settings ===========//
 		$new_options_value[$id][skitter][auto_play]	 				= 	$_POST['skitter_auto_play'];
 		$new_options_value[$id][skitter][stop_over]					= 	$_POST['skitter_stop_over'];
