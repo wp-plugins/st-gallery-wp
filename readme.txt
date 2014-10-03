@@ -8,12 +8,23 @@ Stable tag: 1.0.1
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-ST Gallery WP is an advanced plugin with a list of themes and options for create gallery photo pro, beautifully and easy. It is fully responsive.
+ST Galelry WP is great plugin to create a beautiful slider for your site.
+
 
 == Description ==
-ST Gallery WP is an advanced plugin with a list of themes and options for create gallery photo pro, beautifully and easy. It is fully responsive.
+ST Galelry WP is great plugin to create a beautiful slider for your site.
 
-* 2 Type: Gallery & Slideshow
+Please check demos:
+
+- <a href="http://beautiful-templates.com/demo/wordpress/plugin/?page_id=2">Demo 1</a>
+- <a href="http://beautiful-templates.com/demo/wordpress/plugin/?page_id=8">Demo 2</a>
+- <a href="http://beautiful-templates.com/demo/wordpress/plugin/?page_id=10">Demo 3</a>
+- <a href="http://beautiful-templates.com/demo/wordpress/plugin/?page_id=12">Demo 4</a>
+
+For more information you can check in our site <a href="http://beautiful-templates.com">beautiful-templates.com</a>
+
+
+<h4>Feature:</h4>
 - 7 Theme
 - 38 Animation effects
 
