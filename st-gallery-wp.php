@@ -3,13 +3,12 @@
 Plugin Name: ST Galleria
 Plugin URI: http://beautiful-templates.com
 Description: Create gallery from your image post with Galleria library & Skitter.
-Version: 1.0.1
+Version: 1.0.2
 Author: Beautiful Templates
 Author URI: http://beautiful-templates.com
 License:  GPL2
 */
 require_once 'st-gallery.php';
-
 class StGalleryWp extends StGallery {
 
 	function __construct() {
@@ -56,10 +55,12 @@ class StGalleryWp extends StGallery {
         var list_gallery_id = new Array();
         var list_gallery_name = new Array();';
 		$count = 0;
-		foreach ($this->options as $key => $value) {
-			echo "list_gallery_id[{$count}] = '{$key}';";
-			echo "list_gallery_name[{$count}] = '{$value['name']}';";
-			$count++;
+		if (!empty($this->options)){
+			foreach ($this->options as $key => $value) {
+				echo "list_gallery_id[{$count}] = '{$key}';";
+				echo "list_gallery_name[{$count}] = '{$value['name']}';";
+				$count++;
+			}
 		}
         echo '</script>';
     }
@@ -74,25 +75,24 @@ class StGalleryWp extends StGallery {
 	function add_plugin_page() {
 		add_menu_page( 'ST Gallery WP' , 'ST Gallery WP' , 'manage_options', 'st_gallery', array($this, 'st_router'), 'dashicons-images-alt2');
 		add_submenu_page('st_gallery', 'ST Gallery WP' , __('All Gallery', 'st-gallery' ), 'manage_options', 'st_gallery', array($this, 'st_router'));
-		add_submenu_page('st_gallery', __('Add New Gallery', 'st-gallery' ) , __('Add New', 'st-gallery' ), 'manage_options', 'st_gallery_add', array($this, 'st_gallery_add'));
+		add_submenu_page('st_gallery', __('Add New Gallery', 'st-gallery' ) , __('Add New', 'st-gallery' ), 'manage_options', 'st_gallery&action=add', array($this, 'st_gallery'));
 	}
 
 	function st_router() {
 		if (isset($_GET['action'])) {
-			if ($_GET['action'] == 'edit') {
-				$this -> showDetails();
-			}else{
-				$this -> allGallery();
+			$action = $_GET['action'];
+			switch ($action) {
+				case 'add': 	$this -> galleryEditor($action);
+					break;
+				case 'edit': 	$this -> galleryEditor($action);
+					break;
+				default: 		$this -> allGallery();
+					break;
 			}
 		}else{
 			$this -> allGallery();
 		}
 	}
-	
-	function st_gallery_add() {
-		$this -> addNew();
-	}
-	
 
 	/**
 	 * Register settings
@@ -163,7 +163,6 @@ class StGalleryWp extends StGallery {
 		echo "</script>";
 	}
 
-
-
 }
 new StGalleryWp();
+?>

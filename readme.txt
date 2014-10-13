@@ -4,7 +4,7 @@ Tags: gallery, slider, slideshow, galleria, skitter
 Donate link: http://beautiful-templates.com
 Requires at least: 4.0
 Tested up to: 4.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -27,7 +27,6 @@ For more information you can check in our site <a href="http://beautiful-templat
 <h4>Feature:</h4>
 - 7 Theme
 - 38 Animation effects
-
 - Using HTML5, CSS3, jQuery, Ajax
 - 100% Responsive
 - iPhone, iPad & touch support.
@@ -56,6 +55,9 @@ You will find "ST Gallery WP" menu in your WordPress admin panel.
 10. /assets/screenshot-10.png
 
 == Changelog ==
+= 1.0.2 =
+* Add: add new Widget
+
 = 1.0.1 =
 * Add new 7 sample gallery.
 * Update control style for gallery theme "classic" and "Style 2"
@@ -66,6 +68,10 @@ You will find "ST Gallery WP" menu in your WordPress admin panel.
 
 
 == Upgrade Notice ==
+= 1.0.2 =
+* Upgrade new Widget
+
+
 = 1.0.1 =
 Upgrade new control style and sample gallery, add responsive setting
 

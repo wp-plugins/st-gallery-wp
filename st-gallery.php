@@ -3,13 +3,14 @@
 Plugin: ST Galleria
 Plugin URL: http://beautiful-templates.com
 Description: Create gallery from your image post with Galleria library & Skitter.
-Version: 1.0.1
+Version: 1.0.2
 Author: Beautiful Templates
 Author URI: http://beautiful-templates.com
 License:  GPL2
 */
 ob_start(); 
-include 'classes/st_file.php';
+require_once 'classes/st-file.php';
+require_once 'classes/st-widget.php';
 class StGallery{
 
 	public $options;
@@ -20,7 +21,6 @@ class StGallery{
 		$this->options = get_option('st_gallery_wp');
 	}
 	
-
 	/*
 	 * relative URLs images
 	 */
@@ -131,7 +131,7 @@ class StGallery{
 		?>
 		<div class="wrap st_gallery_wp">
 			<h2><?php _e('ST Gallery WP', 'st-gallery'); ?> 
-				<a href="?page=st_gallery_add" class="add-new-h2"><div class="dashicons dashicons-plus"></div><?php _e('Add New', 'st-gallery'); ?></a> 
+				<a href="?page=st_gallery&action=add" class="add-new-h2"><div class="dashicons dashicons-plus"></div><?php _e('Add New', 'st-gallery'); ?></a> 
 				<a href="?page=st_gallery&action=import" class="add-new-h2"><div class="dashicons dashicons-update"></div><?php _e('Import sample gallery', 'st-gallery'); ?></a>
 			</h2> 
 			<?php
@@ -140,7 +140,6 @@ class StGallery{
 			<div class="st-left">
 				<div class="st-allGallery">
 					<div class="st-row listTitle">
-						<div class="col id"><?php _e('ID', 'st-gallery'); ?></div>
 						<div class="col name"><?php _e('Name', 'st-gallery'); ?></div>
 						<div class="col shortcode"><?php _e('Shortcode', 'st-gallery'); ?></div>
 						<div class="col actions"><?php _e('Actions', 'st-gallery'); ?></div>
@@ -148,13 +147,12 @@ class StGallery{
 					<?php 
 					if ($this->options){
 						foreach ($this->options as $key => $value) { ?>
-					<div class="st-row" id="<?=$key ?>">
-						<div class="col id"><?=$key ?></div>
-						<div class="col name"><a href="?page=st_gallery&action=edit&id=<?=$key ?>"><?=$value['name'] ?></a></div>
-						<div class="col shortcode"><input size="30" class="shortcode" type="text" value='[st-gallery id="<?=$key ?>"]' onmouseover='this.select()'></div>
+					<div class="st-row" id="<?php echo $key; ?>">
+						<div class="col name"><a href="?page=st_gallery&action=edit&id=<?php echo $key; ?>"><?php echo $value['name']; ?></a></div>
+						<div class="col shortcode"><input size="30" class="shortcode" type="text" value='[st-gallery id="<?php echo $key; ?>"]' onmouseover='this.select()'></div>
 						<div class="col actions">
-							<span class="action edit"><a href="?page=st_gallery&action=edit&id=<?=$key ?>"><?php _e('Edit', 'st-gallery'); ?></a></span>
-							<span class="action remove" id="<?=$key ?>"><?php _e('Remove', 'st-gallery'); ?></span>
+							<span class="action edit"><a href="?page=st_gallery&action=edit&id=<?php echo $key; ?>"><?php _e('Edit', 'st-gallery'); ?></a></span>
+							<span class="action remove" id="<?php echo $key; ?>"><?php _e('Remove', 'st-gallery'); ?></span>
 						</div>
 					</div>
 					<?php }
@@ -473,16 +471,16 @@ class StGallery{
 		$gallery = $this->options[$id];
 		$newid = uniqid();
 		?>
-		<div class="st-skitter <?php echo $this -> valString($gallery['skitter']['theme'], 'default') ?>" id="<?= $newid ?>">
+		<div class="st-skitter <?php echo $this -> valString($gallery['skitter']['theme'], 'default') ?>" id="<?php echo $newid; ?>">
 			<?php if ( is_super_admin()) { ?>
-				<div class="st-gallery-edit"><a href="<?= get_home_url() ?>/wp-admin/admin.php?page=st_gallery&action=edit&id=<?= $id ?>" class="edit-link"><?php _e('Edit Gallery', 'st-gallery'); ?></a></div>
+				<div class="st-gallery-edit"><a href="<?php echo get_home_url(); ?>/wp-admin/admin.php?page=st_gallery&action=edit&id=<?php echo $id; ?>" class="edit-link"><?php _e('Edit Gallery', 'st-gallery'); ?></a></div>
 			<?php }	?>
-			<div class="box_skitter <?= $newid ?>" style="width: <?php echo $gallery['settings']['width'].$gallery['settings']['width_end'] ?>; height: <?php echo $gallery['settings']['height']?>px;">
+			<div class="box_skitter <?php echo $newid; ?>" style="width: <?php echo $gallery['settings']['width'].$gallery['settings']['width_end'] ?>; height: <?php echo $gallery['settings']['height']?>px;">
 				<ul>
 				<?php 
 				if (isset($gallery['settings']['source']) && esc_attr($gallery['settings']['source']) == 'Library'){
 					foreach ($gallery['images'] as $i => $images) { ?>
-						<li class="image" id="img-<?=$i ?>">
+						<li class="image" id="img-<?php echo $i; ?>">
 							<a href="#">
 								<img src="<?php echo ( (isset($images['url_2']) && $images['url_2']!="") ? $images['url_2'] : get_home_url().$images['url']); ?>">
 							</a>
@@ -507,7 +505,7 @@ class StGallery{
 								$query->the_post(); 
 								if ( (strlen(wp_get_attachment_url( get_post_thumbnail_id($post->ID) ) ) > 0) || ( ($this->st_get_first_img()!='') && ($gallery['post']['first_img']=='true') ) ){
 								 ?>
-								<li class="image img-<?=$img_id ?>" >
+								<li class="image img-<?php echo $img_id; ?>" >
 									<a href="#">
 										<img src="<?php echo (strlen(wp_get_attachment_url( get_post_thumbnail_id($post->ID) )) > 0) ? wp_get_attachment_url(get_post_thumbnail_id($post->ID)) : $this->st_get_first_img(); ?>">
 									</a>
@@ -526,15 +524,15 @@ class StGallery{
 			<script type="text/javascript" language="javascript">
 			(function($){
 				$(document).ready(function() {
-					$('.<?= $newid ?>').skitter({
-						auto_play: 				<?php echo $this -> valBoolean($gallery['skitter']['auto_play']); ?>, 
-						stop_over: 				<?php echo $this -> valBoolean($gallery['skitter']['stop_over']); ?>, 
-						interval: 				<?php echo $this -> valInt($gallery['skitter']['interval']); ?>,
-						show_randomly: 			<?php echo $this -> valBoolean($gallery['skitter']['show_randomly']); ?>,
-						controls: 				<?php echo $this -> valBoolean($gallery['skitter']['controls']); ?>,
+					$('.<?php echo $newid; ?>').skitter({
+						auto_play: 				<?php echo $this -> valBoolean($gallery['skitter']['auto_play'], true ); ?>, 
+						stop_over: 				<?php echo $this -> valBoolean($gallery['skitter']['stop_over'], true ); ?>, 
+						interval: 				<?php echo $this -> valInt($gallery['skitter']['interval'], 3000 ); ?>,
+						show_randomly: 			<?php echo $this -> valBoolean($gallery['skitter']['show_randomly'], false); ?>,
+						controls: 				<?php echo $this -> valBoolean($gallery['skitter']['controls'], true); ?>,
 						controls_position: 		'<?php echo $this -> valString($gallery['skitter']['controls_position'], 'center') ?>',
-						progressbar:			<?php echo $this -> valBoolean($gallery['skitter']['progressbar']); ?>, 
-						label: 					<?php echo $this -> valBoolean($gallery['skitter']['label']); ?>, 
+						progressbar:			<?php echo $this -> valBoolean($gallery['skitter']['progressbar'], true); ?>, 
+						label: 					<?php echo $this -> valBoolean($gallery['skitter']['label'], true); ?>, 
 						labelAnimation: 		'<?php echo $this -> valString($gallery['skitter']['labelAnimation'], 'slideUp') ?>',
 						
 						<?php
@@ -549,7 +547,7 @@ class StGallery{
 								break;
 							case 'dots':?>
 								dots: true,
-								preview: <?php echo $this -> valBoolean($gallery['skitter']['preview']) ?>,
+								preview: <?php echo $this -> valBoolean($gallery['skitter']['preview'], true); ?>,
 								<?php
 								break;
 							
@@ -558,15 +556,15 @@ class StGallery{
 								break;
 						}
 						?>
-						numbers_align: 			'<?php echo $this -> valString($gallery['skitter']['numbers_align'], 'center') ?>', 
-						navigation: 			<?php echo $this -> valBoolean($gallery['skitter']['next_prev']); ?>,
-						enable_navigation_keys: <?php echo $this -> valBoolean($gallery['skitter']['enable_navigation_keys']); ?>, 
-						hideTools: 				<?php echo $this -> valBoolean($gallery['skitter']['hideTools']); ?>,
-						focus: 					<?php echo $this -> valBoolean($gallery['skitter']['focus']); ?>,
-						focus_position:  		'<?php echo $this -> valString($gallery['skitter']['focus_position'], 'center') ?>', 
-						fullscreen: 			<?php echo $this -> valBoolean($gallery['skitter']['fullscreen']); ?>,
-						animation: 				'<?php echo $this -> valString($gallery['skitter']['animation'], 'randomSmart') ?>',
-						theme: 					'<?php echo $this -> valString($gallery['skitter']['theme'], 'default') ?>', 
+						numbers_align: 			'<?php echo $this -> valString($gallery['skitter']['numbers_align'], 'center'); ?>', 
+						navigation: 			<?php echo $this -> valBoolean($gallery['skitter']['next_prev'], true); ?>,
+						enable_navigation_keys: <?php echo $this -> valBoolean($gallery['skitter']['enable_navigation_keys'], true); ?>, 
+						hideTools: 				<?php echo $this -> valBoolean($gallery['skitter']['hideTools'], true); ?>,
+						focus: 					<?php echo $this -> valBoolean($gallery['skitter']['focus'], true); ?>,
+						focus_position:  		'<?php echo $this -> valString($gallery['skitter']['focus_position'], 'center'); ?>', 
+						fullscreen: 			<?php echo $this -> valBoolean($gallery['skitter']['fullscreen'], false); ?>,
+						animation: 				'<?php echo $this -> valString($gallery['skitter']['animation'], 'randomSmart'); ?>',
+						theme: 					'<?php echo $this -> valString($gallery['skitter']['theme'], 'default'); ?>', 
 					});
 				});
 			})(jQuery);
@@ -575,11 +573,11 @@ class StGallery{
 		echo $this->right();
 	}
 	
-	public function valBoolean($value){
-		return (isset($value) ? $value : 'false'); 
+	public function valBoolean($value, $default){
+		return (isset($value) ? $value : $default); 
 	}
-	public function valInt($value){
-		return (isset($value) ? abs(intval($value)) : 0);
+	public function valInt($value , $default){
+		return (isset($value) ? abs(intval($value)) : abs(intval($default)) );
 	}
 	public function valString($value, $default){
 		return (isset($value) ? $value : $default);
@@ -592,15 +590,15 @@ class StGallery{
 		$gallery = $this->options[$id];
 		$newid = uniqid();
 		?>
-		<div class="st_gallery_wp st-gallery-wrapper <?=$gallery['gallery']['theme']?>" style="max-width: <?=$gallery['settings']['width'].$gallery['settings']['width_end'] ?>; ">
+		<div class="st_gallery_wp st-gallery-wrapper <?php echo $gallery['gallery']['theme']; ?>" style="max-width: <?php echo $gallery['settings']['width'].$gallery['settings']['width_end'] ?>; ">
 				<?php if ( is_super_admin()) { ?>
-					<div class="st-gallery-edit"><a href="<?= get_home_url() ?>/wp-admin/admin.php?page=st_gallery&action=edit&id=<?= $id ?>" class="edit-link"><?php _e('Edit Gallery', 'st-gallery'); ?></a></div>
+					<div class="st-gallery-edit"><a href="<?php echo get_home_url(); ?>/wp-admin/admin.php?page=st_gallery&action=edit&id=<?php echo $id; ?>" class="edit-link"><?php _e('Edit Gallery', 'st-gallery'); ?></a></div>
 				<?php }	?>
-					<div id="<?=$newid?>" class="st-gallery-main <?=$gallery['gallery']['theme']?>" style="max-width: <?=$gallery['settings']['width'].$gallery['settings']['width_end'] ?>; max-height: <?=$gallery['settings']['height'] ?>px;">
+					<div id="<?php echo $newid; ?>" class="st-gallery-main <?php echo $gallery['gallery']['theme']; ?>" style="max-width: <?php echo $gallery['settings']['width'].$gallery['settings']['width_end'] ?>; max-height: <?php echo $gallery['settings']['height'] ?>px;">
 				<?php 
 					if (isset($gallery['settings']['source']) && esc_attr($gallery['settings']['source']) == 'Library'){
 						foreach ($gallery['images'] as $i => $images) { ?>
-							<div class="image" id="img-<?=$i ?>">
+							<div class="image" id="img-<?php echo $i; ?>">
 								<img src="
 								<?php
 									if (isset($images['url_2'])&&$images['url_2']!=""){
@@ -638,7 +636,7 @@ class StGallery{
 								$query->the_post(); 
 								if ( (strlen(wp_get_attachment_url( get_post_thumbnail_id($post->ID) ) ) > 0) || ( ($this->st_get_first_img()!='') && ($gallery['post']['first_img']=='true') ) ){
 								 ?>
-								<div class="image" id="img-<?=$img_id ?>">
+								<div class="image" id="img-<?php echo $img_id; ?>">
 									<img src="<?php
 									if (strlen(wp_get_attachment_url( get_post_thumbnail_id($post->ID) )) > 0){
 										echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)); 
@@ -667,10 +665,10 @@ class StGallery{
 					</div>
 			<?php 
 			if (isset($gallery['gallery']['show_control']) && esc_attr($gallery['gallery']['show_control']) == 'true'){ ?>
-				<div id="st-gallery-control" style="max-width: <?=$gallery['settings']['width'].$gallery['settings']['width_end'] ?>;">
+				<div id="st-gallery-control" style="max-width: <?php echo $gallery['settings']['width'].$gallery['settings']['width_end'] ?>;">
 					<ul class="st-control-text">
-						<li><a class="<?=$newid?> action" href="#"><?php _e('Play', 'st-gallery'); ?></a></li>
-						<li><a class="<?=$newid?> full" href="#"><?php _e('Fullscreen', 'st-gallery'); ?></a></li>
+						<li><a class="<?php echo $newid; ?> action" href="#"><?php _e('Play', 'st-gallery'); ?></a></li>
+						<li><a class="<?php echo $newid; ?> full" href="#"><?php _e('Fullscreen', 'st-gallery'); ?></a></li>
 					</ul>
 				</div>
 			<?php 
@@ -682,16 +680,16 @@ class StGallery{
 			<?php
 			if ($gallery['gallery']['image_delay']){
 				if ($gallery['gallery']['image_delay']==0){ ?>
-					$('.<?=$newid?>.action').html('Play');
+					$('.<?php echo $newid; ?>.action').html('Play');
 		<?php	}else{ ?>
-					$('.<?=$newid?>.action').addClass('active').html('Pause');
+					$('.<?php echo $newid; ?>.action').addClass('active').html('Pause');
 		<?php	}
 			} ?>
 			$(document).ready(function(){
-					Galleria.run('#<?=$newid?>.<?php echo $this -> valString($gallery['gallery']['theme'], 'classic'); ?>',{
+					Galleria.run('#<?php echo $newid; ?>.<?php echo $this -> valString($gallery['gallery']['theme'], 'classic'); ?>',{
 						theme: 		'<?php echo $this -> valString($gallery['gallery']['theme'], 'classic'); ?>',
-						autoplay: 	<?php echo $this -> valInt($gallery['gallery']['image_delay']); ?>,
-						clicknext: 	<?php echo $this -> valBoolean($gallery['gallery']['click_to_next']); ?>, 
+						autoplay: 	<?php echo $this -> valInt($gallery['gallery']['image_delay'], 3000 ); ?>,
+						clicknext: 	<?php echo $this -> valBoolean($gallery['gallery']['click_to_next'], false); ?>, 
 						dataConfig: function(img) {
 							return {
 								title : $(img).attr('data-title'),
@@ -700,7 +698,7 @@ class StGallery{
 						}, 
 						extend: function() {
 							var gallery = this;
-							$('.<?=$newid?>.action').click(function() {
+							$('.<?php echo $newid; ?>.action').click(function() {
 								event.preventDefault();
 								
 								if ($(this).hasClass('active')){
@@ -712,26 +710,26 @@ class StGallery{
 								}
 								
 							});
-							$('.<?=$newid?>.full').click(function() {
+							$('.<?php echo $newid; ?>.full').click(function() {
 								event.preventDefault();
 								gallery.enterFullscreen();
 							});
 						},
-						showCounter: 		<?php echo $this -> valBoolean($gallery['gallery']['show_counter']) ?>,
-						showImagenav: 		<?php echo $this -> valBoolean($gallery['gallery']['show_prev_next']) ?>,
-						imageCrop: 			<?php echo $this -> valBoolean($gallery['gallery']['image_crop']) ?>,
-						thumbnails: 		<?php echo $this -> valBoolean($gallery['gallery']['showThumb']) ?>,
-						thumbCrop: 			<?php echo $this -> valBoolean($gallery['gallery']['thumb_crop']) ?>,
+						showCounter: 		<?php echo $this -> valBoolean($gallery['gallery']['show_counter'], true); ?>,
+						showImagenav: 		<?php echo $this -> valBoolean($gallery['gallery']['show_prev_next'], true); ?>,
+						imageCrop: 			<?php echo $this -> valBoolean($gallery['gallery']['image_crop'], true); ?>,
+						thumbnails: 		<?php echo $this -> valBoolean($gallery['gallery']['showThumb'], true); ?>,
+						thumbCrop: 			<?php echo $this -> valBoolean($gallery['gallery']['thumb_crop'], true); ?>,
 						transition: 		'<?php echo $this -> valString($gallery['gallery']['transition'], 'fadeslide'); ?>',
-						transitionSpeed: 	<?php echo $this -> valInt($gallery['gallery']['transition_speed']); ?>,
-						lightbox: 			<?php echo $this -> valBoolean($gallery['gallery']['lightbox']) ?>,
-						imagePan: 			<?php echo $this -> valBoolean($gallery['gallery']['imagePan']) ?>,
+						transitionSpeed: 	<?php echo $this -> valInt($gallery['gallery']['transition_speed'], 500); ?>,
+						lightbox: 			<?php echo $this -> valBoolean($gallery['gallery']['lightbox'], true); ?>,
+						imagePan: 			<?php echo $this -> valBoolean($gallery['gallery']['imagePan'], true); ?>,
 						responsive: true,
 						height:				<?php
-												if (($this -> valBoolean($gallery['gallery']['responsive']))=='true'){
+												if ($gallery['gallery']['responsive']=='true'){
 													echo '0.5';
 												}else{
-													echo $this -> valInt($gallery['settings']['height']);
+													echo $this -> valInt($gallery['settings']['height'], 500);
 												}
 						 					?>,
 						 					
@@ -745,27 +743,43 @@ class StGallery{
 	/*
 	 * Update gallery
 	 */
-	public function showDetails(){ ?>
+	public function galleryEditor($action){ ?>
 		<div class="wrap st_gallery_wp">
-	   	<h2><?php _e('Edit Gallery', 'st-gallery'); ?>
+	   	<h2>
+	   	<?php
+	   	settings_fields('st_option_group');  
+	   	switch ($action) {
+		   case 'add': 
+		   		_e('Add Gallery', 'st-gallery');
+			   	$id = uniqid();
+			   break;
+		   case 'edit': 
+			   	_e('Edit Gallery', 'st-gallery');
+			   	$id = trim($_GET['id']);
+			   	if (isset($id)){
+					foreach ($this->options as $key => $value) {
+						if ($key==$id){
+							$gallery = $value;
+						}
+					}
+				}
+			   break;
+		   default: _e('Gallery Editor', 'st-gallery');
+			   break;
+	   }
+	   ?>
 	   		<a href="?page=st_gallery" class="add-new-h2"><div class="dashicons dashicons-arrow-left-alt"></div><?php _e('Back to the list', 'st-gallery'); ?></a>
-	   		<a href="?page=st_gallery_add" class="add-new-h2"><div class="dashicons dashicons-plus"></div><?php _e('Add New', 'st-gallery'); ?></a>
+	   		<a href="?page=st_gallery&action=add" class="add-new-h2"><div class="dashicons dashicons-plus"></div><?php _e('Add New', 'st-gallery'); ?></a>
 	   	</h2> 
 	   	<?php
 			$this->st_message();
 		?>
 	  	<form method="post" action="" name="stForm" id="stForm">
-	  		<?php 
-	  		settings_fields('st_option_group'); 
-			$id = trim($_GET['id']);
-			foreach ($this->options as $key => $gallery) {
-				if ($key==$id){ 
-					?>
-					
+
 			<div class="st-left">
 				<div class="st-box name">
-					<input name="id" type="hidden" value="<?=$id; ?>">
-		  			<input name="name" type="text" id="name" value="<?php echo (isset($gallery['name']) ? $gallery['name'] : '') ?>" class="name" placeholder="<?php _e('Enter name here', 'st-gallery'); ?>" > 
+					<input name="id" type="hidden" value="<?php echo $id; ?>">
+		  			<input name="name" type="text" id="name" value="<?php echo $this->valString($gallery['name'], ''); ?>" class="name" placeholder="<?php _e('Enter name here', 'st-gallery'); ?>" > 
 	  			</div>
 	  			<div id="tabs-container">
 				    <ul class="tabs-menu">
@@ -782,11 +796,11 @@ class StGallery{
 			  					<?php
 								if ($gallery['images']){
 									foreach ($gallery['images'] as $i => $images) { ?>
-										<div class="col col-4" id="item-<?= $i ?>">
+										<div class="col col-4" id="item-<?php echo $i; ?>">
 											<div class="item">
 												
 												<div class="image">
-													<input class="hiddenUrl" type="text" name="image[<?= $i ?>][url]" value="<?= $images['url'] ?>" />
+													<input class="hiddenUrl" type="text" name="image[<?php echo $i; ?>][url]" value="<?php echo $images['url']; ?>" />
 													<?php if ($images['url_2']){
 														echo '<img src="' .$images['url_2'] . '" >';
 													} else {
@@ -794,18 +808,18 @@ class StGallery{
 													} ?>
 												</div>
 												<div class="actions">
-													<div class="action edit" id="<?= $i ?>"><div class="dashicons dashicons-edit"></div> Edit</div>
-													<div class="action st-remove" id="<?= $i ?>"><div class="dashicons dashicons-trash"></div>Delete</div>
+													<div class="action edit" id="<?php echo $i; ?>"><div class="dashicons dashicons-edit"></div> Edit</div>
+													<div class="action st-remove" id="<?php echo $i; ?>"><div class="dashicons dashicons-trash"></div>Delete</div>
 												</div>
 												<div class="note">
 													<div class="note-content">
 														<div class="dashicons dashicons-sort"></div> <?php _e('Drag & drop to sort', 'st-gallery') ?>
 													</div>
 												</div>
-												<div class="info" id="info-<?= $i ?>">
-													<label for="title"><?php _e('Title: ', 'st-gallery') ?></label><input type="text" name="image[<?= $i ?>][title]" value="<?= $images['title'] ?>" />
-													<label for="caption"><?php _e('Caption: ', 'st-gallery') ?></label><textarea rows="3" name="image[<?= $i ?>][caption]"><?= $images['caption'] ?></textarea>
-													<label for="url"><?php _e('Image URL: ', 'st-gallery') ?></label><input type="url" name="image[<?= $i ?>][url_2]" value="<?= $images['url_2'] ?>" />
+												<div class="info" id="info-<?php echo $i; ?>">
+													<label for="title"><?php _e('Title: ', 'st-gallery') ?></label><input type="text" name="image[<?php echo $i; ?>][title]" value="<?php echo $images['title']; ?>" />
+													<label for="caption"><?php _e('Caption: ', 'st-gallery') ?></label><textarea rows="3" name="image[<?php echo $i; ?>][caption]"><?php echo $images['caption']; ?></textarea>
+													<label for="url"><?php _e('Image URL: ', 'st-gallery') ?></label><input type="url" name="image[<?php echo $i; ?>][url_2]" value="<?php echo $images['url_2']; ?>" />
 												</div>
 												
 											</div>
@@ -823,12 +837,12 @@ class StGallery{
 				        		</div>
 				        		<div class="right">
 						        	<div class="select_category">
-						        		<?php wp_category_checklist( 0, 0, $gallery['post']['post_category'] ,false, null, false); ?> 	
+						        		<?php wp_category_checklist( 0, 0, $this->valString($gallery['post']['post_category'], '') ,false, null, false); ?> 	
 						        	</div>
 				        		</div>
 				        	</div>
 				        	<?php
-				        		switch ($gallery['post']['order_by']) {
+				        		switch ($this->valString($gallery['post']['order_by'], 'rand')) {
 									case 'date': 			$date_selected 				= 'selected="selected"'; break;
 									case 'modified': 		$modified_selected 			= 'selected="selected"'; break;
 									case 'rand': 			$rand_selected 				= 'selected="selected"'; break;
@@ -859,8 +873,8 @@ class StGallery{
 									)
 								);
 								$this -> st_render_select('order_by', 'Order by', 'Order by:', $order_by);
-						  		$this -> st_render_textbox('limit', 'Posts Display', 'Posts Display:', 'number', $this -> valInt($gallery['post']['limit']), 'min="1"', '(Posts)');
-						  		$this -> st_render_radio('first_img', 'Using the first image of post content if without featured image', 'Using First Images:', $gallery['post']['first_img']);
+						  		$this -> st_render_textbox('limit', 'Posts Display', 'Posts Display:', 'number', $this -> valInt($gallery['post']['limit'], 10), 'min="1"', '(Posts)');
+						  		$this -> st_render_radio('first_img', 'Using the first image of post content if without featured image', 'Using First Images:', $this->valBoolean($gallery['post']['first_img'], true ));
 				        	?>
 				        </div>
 				    </div>
@@ -875,7 +889,7 @@ class StGallery{
 						<div class="st-box">
 							<div class="box-content">
 							<?php
-								switch ($gallery['settings']['width_end']) {
+								switch ($this->valString($gallery['settings']['width_end'], '%')) {
 									case '%': 		$phantram_selected 		= 'selected="selected"'; break;
 									case 'px': 		$px_selected 			= 'selected="selected"'; break;
 									default: 		$phantram_selected 		= 'selected="selected"'; break;
@@ -885,10 +899,10 @@ class StGallery{
 									<option value="%" '.$phantram_selected.'>'.__('%', 'st-gallery').'</option>
 									<option value="px" '.$px_selected.'>'.__('px', 'st-gallery').'</option>
 								</select>';
-								$this -> st_render_textbox('width', __('Manually set a gallery width', 'st-gallery'), __('Width:', 'st-gallery'), 'number', $gallery['settings']['width'], 'min="1"', $width_end);
-								$this -> st_render_textbox('height', __('Manually set a gallery height', 'st-gallery'), __('Height:', 'st-gallery'), 'number', $gallery['settings']['height'], '', __('px', 'st-gallery'));
+								$this -> st_render_textbox('width', __('Manually set a gallery width', 'st-gallery'), __('Width:', 'st-gallery'), 'number', $this->valInt($gallery['settings']['width'], 100), 'min="1"', $width_end);
+								$this -> st_render_textbox('height', __('Manually set a gallery height', 'st-gallery'), __('Height:', 'st-gallery'), 'number', $this->valInt($gallery['settings']['height'], 500), '', __('px', 'st-gallery'));
 								
-								switch ($gallery['settings']['source']) {
+								switch ($this->valString($gallery['settings']['source'], 'Library')) {
 									case 'Library': 	$Library_selected 		= 'selected="selected"'; break;
 									case 'Post': 		$Post_selected 			= 'selected="selected"'; break;
 									default: 			$Library_selected 		= 'selected="selected"'; break;
@@ -905,7 +919,7 @@ class StGallery{
 										);
 								$this -> st_render_select('source', __('Sets image source for gallery', 'st-gallery'), __('Source:', 'st-gallery'), $source);
 								
-								switch ($gallery['settings']['style']) {
+								switch ($this->valString($gallery['settings']['style'], 'gallery')) {
 									case 'gallery': 	$gallery_selected 		= 'selected="selected"'; break;
 									case 'skitter': 	$skitter_selected 		= 'selected="selected"'; break;
 									default: 			$gallery_selected 		= 'selected="selected"'; break;
@@ -925,19 +939,19 @@ class StGallery{
 							</div>
 						</div>
 						
-						<h3 class="box-title gallery-setting <?php echo ( ($this -> valString($gallery['settings']['style'], '')=='gallery') ? 'setting_display' : 'setting_hide'); ?>"><div class="dashicons dashicons-images-alt2"></div> <?php _e('Gallery Settings', 'st-gallery'); ?></h3>
-					  	<div class="st-box <?php echo ( ($this -> valString($gallery['settings']['style'], '')=='gallery') ? 'setting_display' : 'setting_hide'); ?>">
+						<h3 class="box-title gallery-setting <?php echo ( ($this -> valString($gallery['settings']['style'], 'gallery')=='gallery') ? 'setting_display' : 'setting_hide'); ?>"><div class="dashicons dashicons-images-alt2"></div> <?php _e('Gallery Settings', 'st-gallery'); ?></h3>
+					  	<div class="st-box <?php echo ( ($this -> valString($gallery['settings']['style'], 'gallery')=='gallery') ? 'setting_display' : 'setting_hide'); ?>">
 							<div class="box-content">
 							<?php 
 								
-								$this -> st_render_radio('show_control', __('Show control', 'st-gallery'), __('Show Control:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['show_control']));
-								$this -> st_render_radio('click_to_next', __('Click to next', 'st-gallery'), __('Click To Next:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['click_to_next']));
-								$this -> st_render_radio('show_counter', __('Toggles the counter', 'st-gallery'), __('Show Counter:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['show_counter']));
-								$this -> st_render_radio('show_prev_next', __('Toggles the image navigation arrows', 'st-gallery'), __('Show Prev/Next:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['show_prev_next']));
-								$this -> st_render_radio('image_crop', __('Defines gallery will crop the image', 'st-gallery'), __('Image Crop:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['image_crop']));
-								$this -> st_render_radio('imagePan', __('Toggles the image pan effect', 'st-gallery'), __('Image Pan:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['imagePan']));
-								$this -> st_render_radio('showThumb', __('Toggles the thumbnail', 'st-gallery'), __('Show Thumbnails:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['showThumb']));
-								$this -> st_render_radio('thumb_crop', __('Defines gallery will crop the thumbnail', 'st-gallery'), __('Thumb Crop:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['thumb_crop']));
+								$this -> st_render_radio('show_control', __('Show control', 'st-gallery'), __('Show Control:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['show_control'], true));
+								$this -> st_render_radio('click_to_next', __('Click to next', 'st-gallery'), __('Click To Next:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['click_to_next'], false));
+								$this -> st_render_radio('show_counter', __('Toggles the counter', 'st-gallery'), __('Show Counter:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['show_counter'], true));
+								$this -> st_render_radio('show_prev_next', __('Toggles the image navigation arrows', 'st-gallery'), __('Show Prev/Next:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['show_prev_next'], true));
+								$this -> st_render_radio('image_crop', __('Defines gallery will crop the image', 'st-gallery'), __('Image Crop:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['image_crop'], true));
+								$this -> st_render_radio('imagePan', __('Toggles the image pan effect', 'st-gallery'), __('Image Pan:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['imagePan'], true));
+								$this -> st_render_radio('showThumb', __('Toggles the thumbnail', 'st-gallery'), __('Show Thumbnails:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['showThumb'], true));
+								$this -> st_render_radio('thumb_crop', __('Defines gallery will crop the thumbnail', 'st-gallery'), __('Thumb Crop:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['thumb_crop'], true));
 								
 								switch ($this -> valString($gallery['gallery']['transition'], 'fadeslide')) {
 									case 'fadeslide': 	$fadeslide_selected 	= 'selected="selected"'; break;
@@ -970,11 +984,11 @@ class StGallery{
 											)
 										);
 								$this -> st_render_select('transition', __('Defines what transition to use', 'st-gallery'), __('Transition:', 'st-gallery'), $transition);
-								$this -> st_render_textbox('transition_speed', __('Defines the speed of the transition', 'st-gallery'), __('Transition Speed:', 'st-gallery'), 'number', $this -> valInt($gallery['gallery']['transition_speed']), '', __('(100 = 1 sec)', 'st-gallery'));
-								$this -> st_render_radio('lightbox', __('Zoom in when the user clicks on an image', 'st-gallery'), __('LightBox:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['lightbox']));
-								$this -> st_render_textbox('image_delay', __('Enter 0 to disable autoplay gallery', 'st-gallery'), __('Image Delay:', 'st-gallery'), 'number', $this -> valInt($gallery['gallery']['image_delay']), 'min="0"', __('(1000 = 1 sec)', 'st-gallery'));
-								$this -> st_render_radio('show_title_image', __('Toggles the title', 'st-gallery'), __('Show Title Image:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['show_title_image']));
-								$this -> st_render_radio('show_caption_image', __('Toggles the caption', 'st-gallery'), __('Show Caption Image:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['show_caption_image']));
+								$this -> st_render_textbox('transition_speed', __('Defines the speed of the transition', 'st-gallery'), __('Transition Speed:', 'st-gallery'), 'number', $this -> valInt($gallery['gallery']['transition_speed'], 500), '', __('(100 = 1 sec)', 'st-gallery'));
+								$this -> st_render_radio('lightbox', __('Zoom in when the user clicks on an image', 'st-gallery'), __('LightBox:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['lightbox'], true));
+								$this -> st_render_textbox('image_delay', __('Enter 0 to disable autoplay gallery', 'st-gallery'), __('Image Delay:', 'st-gallery'), 'number', $this -> valInt($gallery['gallery']['image_delay'], 3000), 'min="0"', __('(1000 = 1 sec)', 'st-gallery'));
+								$this -> st_render_radio('show_title_image', __('Toggles the title', 'st-gallery'), __('Show Title Image:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['show_title_image'], true));
+								$this -> st_render_radio('show_caption_image', __('Toggles the caption', 'st-gallery'), __('Show Caption Image:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['show_caption_image'], true));
 								
 								switch ($this -> valString($gallery['gallery']['theme'], 'classic')) {
 									case 'classic': 	$classic_selected 		= 'selected="selected"'; break;
@@ -992,23 +1006,23 @@ class StGallery{
 											)
 										);
 								$this -> st_render_select('theme', __('Sets theme for gallery', 'st-gallery'), __('Theme:', 'st-gallery'), $theme);
-								$this -> st_render_radio('responsive', __('Responsive', 'st-gallery'), __('Responsive:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['responsive']));
+								$this -> st_render_radio('responsive', __('Responsive', 'st-gallery'), __('Responsive:', 'st-gallery'), $this -> valBoolean($gallery['gallery']['responsive'], false));
 							?>
 						</div>
 					</div>
 				
-					<h3 class="box-title skitter-setting <?php echo ( ($this -> valString($gallery['settings']['style'], '')=='skitter') ? 'setting_display' : 'setting_hide'); ?>"><div class="dashicons dashicons-format-image"></div> <?php _e('Skitter Settings', 'st-gallery'); ?></h3>
-					<div class="st-box <?php echo ( ($this -> valString($gallery['settings']['style'], '')=='skitter') ? 'setting_display' : 'setting_hide'); ?>">
+					<h3 class="box-title skitter-setting <?php echo ( ($this -> valString($gallery['settings']['style'], 'gallery')=='skitter') ? 'setting_display' : 'setting_hide'); ?>"><div class="dashicons dashicons-format-image"></div> <?php _e('Skitter Settings', 'st-gallery'); ?></h3>
+					<div class="st-box <?php echo ( ($this -> valString($gallery['settings']['style'], 'gallery')=='skitter') ? 'setting_display' : 'setting_hide'); ?>">
 						<div class="box-content">
 				  		<?php 
 						
-							$this -> st_render_radio('skitter_auto_play', __('Auto play', 'st-gallery'), __('Auto Play:', 'st-gallery'), $gallery['skitter']['auto_play']);
-							$this -> st_render_radio('skitter_stop_over', __('Stop animation to move mouse over it', 'st-gallery'), __('Stop Over:', 'st-gallery'), $gallery['skitter']['stop_over']);
-							$this -> st_render_textbox('skitter_interval', __('Interval between transitions', 'st-gallery'), __('Interval:', 'st-gallery'), 'number',$this -> valInt($gallery['skitter']['interval']) , 'min="0"', __('(1000 = 1 sec)', 'st-gallery'));
-							$this -> st_render_radio('skitter_show_randomly', __('Toggles the randomly sliders', 'st-gallery'), __('Show Randomly:', 'st-gallery'), $gallery['skitter']['show_randomly']);
-							$this -> st_render_radio('skitter_controls', __('Show control', 'st-gallery'), __('Show Control:', 'st-gallery'), $gallery['skitter']['controls']);
+							$this -> st_render_radio('skitter_auto_play', __('Auto play', 'st-gallery'), __('Auto Play:', 'st-gallery'), $this->valBoolean($gallery['skitter']['auto_play'], true));
+							$this -> st_render_radio('skitter_stop_over', __('Stop animation to move mouse over it', 'st-gallery'), __('Stop Over:', 'st-gallery'), $this->valBoolean($gallery['skitter']['stop_over'], true));
+							$this -> st_render_textbox('skitter_interval', __('Interval between transitions', 'st-gallery'), __('Interval:', 'st-gallery'), 'number',$this -> valInt($gallery['skitter']['interval'], 3000) , 'min="0"', __('(1000 = 1 sec)', 'st-gallery'));
+							$this -> st_render_radio('skitter_show_randomly', __('Toggles the randomly sliders', 'st-gallery'), __('Show Randomly:', 'st-gallery'), $this->valBoolean($gallery['skitter']['show_randomly'], false));
+							$this -> st_render_radio('skitter_controls', __('Show control', 'st-gallery'), __('Show Control:', 'st-gallery'), $this->valBoolean($gallery['skitter']['controls'], true));
 							
-							switch ($gallery['skitter']['controls_position']) {
+							switch ($this->valString($gallery['skitter']['controls_position'], 'center')) {
 								case 'center': 			$center_selected 		= 'selected="selected"'; break;
 								case 'leftTop': 		$leftTop_selected 		= 'selected="selected"'; break;
 								case 'rightTop': 		$rightTop_selected 		= 'selected="selected"'; break;
@@ -1039,10 +1053,10 @@ class StGallery{
 										)
 									);
 							$this -> st_render_select('skitter_controls_position', __('Defines controls position', 'st-gallery'), __('Controls Position:', 'st-gallery'), $skitter_controls_position);
-							$this -> st_render_radio('skitter_progressbar', __('Show/hide progress bar', 'st-gallery'), __('Progress Bar:', 'st-gallery'), $gallery['skitter']['progressbar']);
-							$this -> st_render_radio('skitter_label', __('Toggles the title', 'st-gallery'), __('Show Title:', 'st-gallery'), $gallery['skitter']['label']);
+							$this -> st_render_radio('skitter_progressbar', __('Show/hide progress bar', 'st-gallery'), __('Progress Bar:', 'st-gallery'), $this->valBoolean($gallery['skitter']['progressbar'], true));
+							$this -> st_render_radio('skitter_label', __('Toggles the title', 'st-gallery'), __('Show Title:', 'st-gallery'), $this->valBoolean($gallery['skitter']['label'], true));
 							
-							switch ($gallery['skitter']['labelAnimation']) {
+							switch ($this->valString($gallery['skitter']['labelAnimation'], 'slideUp')) {
 								case 'slideUp': 	$slideUp_selected 		= 'selected="selected"'; break;
 								case 'left': 		$left_selected 			= 'selected="selected"'; break;
 								case 'right': 		$right_selected 		= 'selected="selected"'; break;
@@ -1069,7 +1083,7 @@ class StGallery{
 									);
 							$this -> st_render_select('skitter_labelAnimation', __('Defines title animation', 'st-gallery'), __('Title Animation:', 'st-gallery'), $labelAnimation);
 							
-							switch ($gallery['skitter']['navigation']) {
+							switch ($this->valString($gallery['skitter']['navigation'], 'dots')) {
 								case 'thumbs': 		$thumbs_selected 		= 'selected="selected"'; break;
 								case 'numbers': 	$numbers_selected 		= 'selected="selected"'; break;
 								case 'dots': 		$dots_selected 			= 'selected="selected"'; break;
@@ -1091,7 +1105,7 @@ class StGallery{
 									);
 							$this -> st_render_select('skitter_navigation', __('Sets navigation style', 'st-gallery'), __('Navigation Style:', 'st-gallery'), $navigation);
 							
-							switch ($gallery['skitter']['navigation_position']) {
+							switch ($this->valString($gallery['skitter']['navigation_position'], 'center')) {
 								case 'center': 		$center_selected 		= 'selected="selected"'; break;
 								case 'left': 		$left_selected 			= 'selected="selected"'; break;
 								case 'right': 		$right_selected 		= 'selected="selected"'; break;
@@ -1112,13 +1126,13 @@ class StGallery{
 										)
 									);
 							$this -> st_render_select('skitter_navigation_position', __('Sets navigation position', 'st-gallery'), __('Navigation Position:', 'st-gallery'), $navigation_position);
-							$this -> st_render_radio('skitter_preview', __('Thumbnail previews when you hover over the dots', 'st-gallery'), __('Preview:', 'st-gallery'), $gallery['skitter']['preview']);
-							$this -> st_render_radio('skitter_next_prev', __('Show the navigation buttons next/previous', 'st-gallery'), __('Show Next/Prev:', 'st-gallery'), $gallery['skitter']['next_prev']);
-							$this -> st_render_radio('skitter_enable_navigation_keys', __('Using key < > to previous/next sliders', 'st-gallery'), __('Navigation Keys:', 'st-gallery'), $gallery['skitter']['enable_navigation_keys']);
-							$this -> st_render_radio('skitter_hideTools', __('Auto-hide the navigation buttons, controls, thumbs', 'st-gallery'), __('Auto hide:', 'st-gallery'), $gallery['skitter']['hideTools']);
-							$this -> st_render_radio('skitter_focus', __('Focus slideshow', 'st-gallery'), __('Focus Slideshow:', 'st-gallery'), $gallery['skitter']['focus']);
+							$this -> st_render_radio('skitter_preview', __('Thumbnail previews when you hover over the dots', 'st-gallery'), __('Preview:', 'st-gallery'), $this->valBoolean($gallery['skitter']['preview'], true));
+							$this -> st_render_radio('skitter_next_prev', __('Show the navigation buttons next/previous', 'st-gallery'), __('Show Next/Prev:', 'st-gallery'),$this->valBoolean( $gallery['skitter']['next_prev'], true));
+							$this -> st_render_radio('skitter_enable_navigation_keys', __('Using key < > to previous/next sliders', 'st-gallery'), __('Navigation Keys:', 'st-gallery'), $this->valBoolean($gallery['skitter']['enable_navigation_keys'], true));
+							$this -> st_render_radio('skitter_hideTools', __('Auto-hide the navigation buttons, controls, thumbs', 'st-gallery'), __('Auto hide:', 'st-gallery'), $this->valBoolean($gallery['skitter']['hideTools'], true));
+							$this -> st_render_radio('skitter_focus', __('Focus slideshow', 'st-gallery'), __('Focus Slideshow:', 'st-gallery'), $this->valBoolean($gallery['skitter']['focus'], true));
 							
-							switch ($gallery['skitter']['focus_position']) {
+							switch ($this->valString($gallery['skitter']['focus_position'], 'center')) {
 								case 'center': 			$center_selected 			= 'selected="selected"'; break;
 								case 'leftTop': 		$leftTop_selected 			= 'selected="selected"'; break;
 								case 'rightTop': 		$rightTop_selected 			= 'selected="selected"'; break;
@@ -1149,10 +1163,10 @@ class StGallery{
 										)
 									);
 							$this -> st_render_select('skitter_focus_position', __('Sets position for focus slideshow button', 'st-gallery'), __('Focus Position:', 'st-gallery'), $focus_position);
-							$this -> st_render_radio('skitter_fullscreen', __('Sets fullscreen', 'st-gallery'), __('Fullscreen:', 'st-gallery'), $gallery['skitter']['fullscreen']);
+							$this -> st_render_radio('skitter_fullscreen', __('Sets fullscreen', 'st-gallery'), __('Fullscreen:', 'st-gallery'), $this->valBoolean($gallery['skitter']['fullscreen'], false));
 							
 							
-							switch ($gallery['skitter']['animation']) {
+							switch ($this->valString($gallery['skitter']['animation'], 'randomSmart')) {
 								case 'cube': 			$cube_selected 				= 'selected="selected"'; break;
 								case 'cubeRandom': 		$cubeRandom_selected 		= 'selected="selected"'; break;
 								case 'block': 			$block_selected 			= 'selected="selected"'; break;
@@ -1354,7 +1368,7 @@ class StGallery{
 									);
 							$this -> st_render_select('skitter_animation', __('Sets animation', 'st-gallery'), __('Animation:', 'st-gallery'), $skitter_animation);
 							
-							switch ($gallery['skitter']['theme']) {
+							switch ($this->valString($gallery['skitter']['theme'], 'default')) {
 								case 'default': 	$default_selected 		= 'selected="selected"'; break;
 								case 'minimalist': 	$minimalist_selected 	= 'selected="selected"'; break;
 								case 'round': 		$round_selected 		= 'selected="selected"'; break;
@@ -1398,12 +1412,15 @@ class StGallery{
 	  	</form>
 	
 	<?php
-		}
-	}
-
 	if($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['savechanges'])){
-		unset($this->options[$id]);
-		update_option('st_gallery_wp',$this->options);
+		
+		$m = 1;
+		
+		if ($action=='edit'){
+			unset($this->options[$id]);
+			update_option('st_gallery_wp',$this->options);
+			$m = 2;
+		}
 		$old_options_value = get_option('st_gallery_wp');
 		
 		$new_options_value = array();
@@ -1476,575 +1493,13 @@ class StGallery{
 		}
 		
 		update_option('st_gallery_wp', $new_options_value);
-		echo '<meta http-equiv="refresh" content="0; URL=admin.php?page=st_gallery&action=edit&id='.$id.'&message=2">';
+		echo '<meta http-equiv="refresh" content="0; URL=admin.php?page=st_gallery&action=edit&id='.$id.'&message='.$m.'">';
 	}
   	?>
 	  	
 	</div>
 			
 	<?php
-	}
-
-	/*
-	 * Add new gallery
-	 */
-	public function addNew(){ ?>
-	 	<div class="wrap st_gallery_wp">
-	   	<h2>
-	   		<?php _e('Add New Gallery', 'st-gallery'); ?> <a href="?page=st_gallery" class="add-new-h2"><div class="dashicons dashicons-arrow-left-alt"></div><?php _e('Back to the list', 'st-gallery'); ?></a>
-	   	</h2> 
-	   	<?php
-			$this->st_message();
-		?>
-	  	<form method="post" action="" name="stForm" id="stForm">
-	  		<?php
-			settings_fields('st_option_group');
-			$id = uniqid();
-			?>
-			<div class="st-left">
-				<div class="st-box name">
-					<input name="id" type="hidden" value="<?=$id ?>">
-		  			<input name="name" type="text" id="name" value="" class="name" placeholder="<?php _e('Enter name here', 'st-gallery'); ?>"> 
-	  			</div>
-  				
-  				<div id="tabs-container">
-				    <ul class="tabs-menu">
-				        <li class="current"><a href="#tab-1"><?php _e('Library Source', 'st-gallery'); ?></a></li>
-				        <li><a href="#tab-2"><?php _e('Post Source', 'st-gallery'); ?></a></li>
-				    </ul>
-				    <div class="tab">
-				        <div id="tab-1" class="tab-content">
-				        	<div id="add-images">
-								<?php wp_enqueue_media(); ?>
-								<input type="button" class="button st-button st-upload" id="st-upload" value="<?php _e('Go Library', 'st-gallery'); ?>" />
-			  				</div>
-			  				<div id="appendImages"><!-- images --></div>
-				        </div>
-				        <div id="tab-2" class="tab-content">
-				        	<div class="st-row">
-				        		<div class="left">
-				        			<label><?php _e('Select Category: ', 'st-gallery'); ?></label>
-				        		</div>
-				        		<div class="right">
-						        	<div class="select_category">
-						        		<?php wp_category_checklist( 0, 0, false ,false, null, false); ?> 	
-						        	</div>
-				        		</div>
-				        	</div>
-				        	
-						  	<?php
-							  	$order_by = array(
-									'date' 			=> array(
-										'select' 	=> 'selected="selected"',
-										'name' 		=> 'Published Date',
-									),
-									'modified' 		=> array(
-										'select' 	=> '',
-										'name' 		=> 'Modified Date',
-									),
-									'rand' 			=> array(
-										'select' 	=> '',
-										'name' 		=> 'Random',
-									),
-									'title' 		=> array(
-										'select' 	=> '',
-										'name' 		=> 'Post Title',
-									),
-									'comment_count' => array(
-										'select' 	=> '',
-										'name' 		=> 'Popular',
-									)
-								);
-								$this -> st_render_select('order_by', 'Order by', 'Order by:', $order_by);
-						  		$this -> st_render_textbox('limit', 'Posts Display', 'Posts Display:', 'number', '10', 'min="1"', '(Posts)');
-						  		$this -> st_render_radio('first_img', 'Using the first image of post content if without featured image', 'Using First Images:', true);
-						  	?>
-					  	
-						</div>
-					</div>
-				</div>
-				<?php submit_button('Submit', 'st-button', 'savechanges'); ?>
-			</div>
-			<div class="st-right">
-				
-				<div id="setting_bar">
-					<h3 class="box-title"><div class="dashicons dashicons-admin-generic"></div> <?php _e('Settings', 'st-gallery'); ?></h3>
-					<div class="st-box">
-						<div class="box-content">
-						<?php
-							$width_end = '
-							<select id="width_end" name="width_end">
-								<option value="%" selected="selected">'.__('%', 'st-gallery').'</option>
-								<option value="px">'.__('px', 'st-gallery').'</option>
-							</select>';
-							$this -> st_render_textbox('width', __('Manually set a gallery width', 'st-gallery'), __('Width:', 'st-gallery'), 'number', '100', 'min="1"', $width_end);
-							$this -> st_render_textbox('height', __('Manually set a gallery height', 'st-gallery'), __('Height:', 'st-gallery'), 'number', '400', '', __('px', 'st-gallery'));
-							$source = array(
-										'Library' 		=> array(
-											'select' 	=> 'selected="selected"',
-											'name' 		=> __('Library', 'st-gallery'),
-										),
-										'Post' 			=> array(
-											'select'	=> '',
-											'name' 		=> __('Post', 'st-gallery'),
-										)
-									);
-							$this -> st_render_select('source', __('Sets image source for gallery', 'st-gallery'), __('Source:', 'st-gallery'), $source);
-							$style = array(
-								'gallery'	=> array(
-									'select'	=> 'selected="selected"',
-									'name'		=> 'Gallery',
-								),
-								'skitter'	=> array(
-									'select'	=> '',
-									'name'		=> 'Skitter',
-								),
-							);
-							$this -> st_render_select('style', 'Choose Type', 'Choose Type: ', $style);
-						?>
-						</div>
-					</div>
-					<h3 class="box-title gallery-setting <?php echo ( ($this -> valString($gallery['settings']['style'], 'gallery')=='gallery') ? 'setting_display' : 'setting_hide'); ?>"><div class="dashicons dashicons-images-alt2"></div> <?php _e('Gallery Settings', 'st-gallery'); ?></h3>
-				  	<div class="st-box <?php echo ( ($this -> valString($gallery['settings']['style'], 'gallery')=='gallery') ? 'setting_display' : 'setting_hide'); ?>">
-						<div class="box-content">
-						<?php 
-							
-							$this -> st_render_radio('show_control', __('Show control', 'st-gallery'), __('Show Control:', 'st-gallery'), true);
-							$this -> st_render_radio('click_to_next', __('Click to next', 'st-gallery'), __('Click To Next:', 'st-gallery'), false);
-							$this -> st_render_radio('show_counter', __('Toggles the counter', 'st-gallery'), __('Show Counter:', 'st-gallery'), true);
-							$this -> st_render_radio('show_prev_next', __('Toggles the image navigation arrows', 'st-gallery'), __('Show Prev/Next:', 'st-gallery'), true);
-							$this -> st_render_radio('image_crop', __('Defines gallery will crop the image', 'st-gallery'), __('Image Crop:', 'st-gallery'), true);
-							$this -> st_render_radio('imagePan', __('Toggles the image pan effect', 'st-gallery'), __('Image Pan:', 'st-gallery'), true);
-							$this -> st_render_radio('showThumb', __('Toggles the thumbnail', 'st-gallery'), __('Show Thumbnails:', 'st-gallery'), true);
-							$this -> st_render_radio('thumb_crop', __('Defines gallery will crop the thumbnail', 'st-gallery'), __('Thumb Crop:', 'st-gallery'), true);
-							$transition = array(
-										'fadeslide'	 	=> array(
-											'select' 	=> 'selected="selected"',
-											'name' 		=> __('Fade Slide', 'st-gallery'),
-										),
-										'flash' 		=> array(
-											'select' 	=> '',
-											'name' 		=> __('Flash', 'st-gallery'),
-										),
-										'pulse' 		=> array(
-											'select'	=> '',
-											'name' 		=> __('Pulse', 'st-gallery'),
-										),
-										'slide' 		=> array(
-											'select' 	=> '',
-											'name' 		=> __('Slide', 'st-gallery'),
-										),
-										'fade' 			=> array(
-											'select' 	=> '',
-											'name' 		=> __('Fade', 'st-gallery'),
-										)
-									);
-							$this -> st_render_select('transition', __('Defines what transition to use', 'st-gallery'), __('Transition:', 'st-gallery'), $transition);
-							$this -> st_render_textbox('transition_speed', __('Defines the speed of the transition', 'st-gallery'), __('Transition Speed:', 'st-gallery'), 'number', '500', '', __('(100 = 1 sec)', 'st-gallery'));
-							$this -> st_render_radio('lightbox', __('Zoom in when the user clicks on an image', 'st-gallery'), __('LightBox:', 'st-gallery'), true);
-							$this -> st_render_textbox('image_delay', __('Enter 0 to disable autoplay gallery', 'st-gallery'), __('Image Delay:', 'st-gallery'), 'number', '3000', 'min="0"', __('(1000 = 1 sec)', 'st-gallery'));
-							$this -> st_render_radio('show_title_image', __('Toggles the title', 'st-gallery'), __('Show Title Image:', 'st-gallery'), true);
-							$this -> st_render_radio('show_caption_image', __('Toggles the caption', 'st-gallery'), __('Show Caption Image:', 'st-gallery'), true);
-							$theme = array(
-										'classic' 		=> array(
-											'select' 	=> 'selected="selected"',
-											'name' 		=> __('Classic', 'st-gallery'),
-										),
-										'v2' 			=> array(
-											'select' 	=> '',
-											'name' 		=> __('Style 2', 'st-gallery'),
-										)
-									);
-							$this -> st_render_select('theme', __('Sets theme for gallery', 'st-gallery'), __('Theme:', 'st-gallery'), $theme);
-							$this -> st_render_radio('responsive', __('Responsive', 'st-gallery'), __('Responsive:', 'st-gallery'), true);
-						?>
-					</div>
-				</div>
-				 
-				<h3 class="box-title skitter-setting <?php echo ( ($this -> valString($gallery['settings']['style'], '')=='skitter') ? 'setting_display' : 'setting_hide'); ?>"><div class="dashicons dashicons-format-image"></div> <?php _e('Skitter Settings', 'st-gallery'); ?></h3>
-				<div class="st-box <?php echo ( ($this -> valString($gallery['settings']['style'], '')=='skitter') ? 'setting_display' : 'setting_hide'); ?>">
-					<div class="box-content">
-			  		<?php 
-					
-						$this -> st_render_radio('skitter_auto_play', __('Auto play', 'st-gallery'), __('Auto Play:', 'st-gallery'), true);
-						$this -> st_render_radio('skitter_stop_over', __('Stop animation to move mouse over it', 'st-gallery'), __('Stop Over:', 'st-gallery'), true);
-						$this -> st_render_textbox('skitter_interval', __('Interval between transitions', 'st-gallery'), __('Interval:', 'st-gallery'), 'number', '2500', 'min="0"', __('(1000 = 1 sec)', 'st-gallery'));
-						$this -> st_render_radio('skitter_show_randomly', __('Toggles the randomly sliders', 'st-gallery'), __('Show Randomly:', 'st-gallery'), true);
-						$this -> st_render_radio('skitter_controls', __('Show control', 'st-gallery'), __('Show Control:', 'st-gallery'), true);
-						$skitter_controls_position = array(
-									'center'	 	=> array(
-										'select' 	=> 'selected="selected"',
-										'name' 		=> __('Center', 'st-gallery'),
-									),
-									'leftTop' 		=> array(
-										'select' 	=> '',
-										'name' 		=> __('Left Top', 'st-gallery'),
-									),
-									'rightTop' 		=> array(
-										'select'	=> '',
-										'name' 		=> __('Right Top', 'st-gallery'),
-									),
-									'leftBottom' 		=> array(
-										'select' 	=> '',
-										'name' 		=> __('Left Bottom', 'st-gallery'),
-									),
-									'rightBottom' 			=> array(
-										'select' 	=> '',
-										'name' 		=> __('Right Bottom', 'st-gallery'),
-									)
-								);
-						$this -> st_render_select('skitter_controls_position', __('Defines controls position', 'st-gallery'), __('Controls Position:', 'st-gallery'), $skitter_controls_position);
-						$this -> st_render_radio('skitter_progressbar', __('Show/hide progress bar', 'st-gallery'), __('Progress Bar:', 'st-gallery'), true);
-						$this -> st_render_radio('skitter_label', __('Toggles the title', 'st-gallery'), __('Show Title:', 'st-gallery'), true);
-						$labelAnimation = array(
-									'slideUp'	 	=> array(
-										'select' 	=> 'selected="selected"',
-										'name' 		=> __('Slide Up', 'st-gallery'),
-									),
-									'left' 		=> array(
-										'select' 	=> '',
-										'name' 		=> __('Left', 'st-gallery'),
-									),
-									'right' 		=> array(
-										'select'	=> '',
-										'name' 		=> __('Right', 'st-gallery'),
-									),
-									'fixed' 		=> array(
-										'select'	=> '',
-										'name' 		=> __('Fixed', 'st-gallery'),
-									),
-								);
-						$this -> st_render_select('skitter_labelAnimation', __('Defines title animation', 'st-gallery'), __('Title Animation:', 'st-gallery'), $labelAnimation);
-						$navigation = array(
-									'thumbs' 		=> array(
-										'select' 	=> 'selected="selected"',
-										'name' 		=> __('Thumbnails', 'st-gallery'),
-									),
-									'numbers' 			=> array(
-										'select'	=> '',
-										'name' 		=> __('Numbers', 'st-gallery'),
-									),
-									'dots' 			=> array(
-										'select'	=> '',
-										'name' 		=> __('Dots', 'st-gallery'),
-									)
-								);
-						$this -> st_render_select('skitter_navigation', __('Sets navigation style', 'st-gallery'), __('Navigation Style:', 'st-gallery'), $navigation);
-						$navigation_position = array(
-									'center' 		=> array(
-										'select' 	=> 'selected="selected"',
-										'name' 		=> __('Center', 'st-gallery'),
-									),
-									'left' 			=> array(
-										'select'	=> '',
-										'name' 		=> __('Left', 'st-gallery'),
-									),
-									'right' 		=> array(
-										'select'	=> '',
-										'name' 		=> __('Right', 'st-gallery'),
-									)
-								);
-						$this -> st_render_select('skitter_navigation_position', __('Sets navigation position', 'st-gallery'), __('Navigation Position:', 'st-gallery'), $navigation_position);
-						$this -> st_render_radio('skitter_preview', __('Thumbnail previews when you hover over the dots', 'st-gallery'), __('Preview:', 'st-gallery'), true);
-						$this -> st_render_radio('skitter_next_prev', __('Show the navigation buttons next/previous', 'st-gallery'), __('Show Next/Prev:', 'st-gallery'), true);
-						$this -> st_render_radio('skitter_enable_navigation_keys', __('Using key < > to previous/next sliders', 'st-gallery'), __('Navigation Keys:', 'st-gallery'), true);
-						$this -> st_render_radio('skitter_hideTools', __('Auto-hide the navigation buttons, controls, thumbs', 'st-gallery'), __('Auto hide:', 'st-gallery'), true);
-						$this -> st_render_radio('skitter_focus', __('Focus slideshow', 'st-gallery'), __('Focus Slideshow:', 'st-gallery'), true);
-						$focus_position = array(
-									'center' 		=> array(
-										'select' 	=> 'selected="selected"',
-										'name' 		=> __('Center', 'st-gallery'),
-									),
-									'leftTop' 		=> array(
-										'select'	=> '',
-										'name' 		=> __('Left Top', 'st-gallery'),
-									),
-									'rightTop' 		=> array(
-										'select'	=> '',
-										'name' 		=> __('Right Top', 'st-gallery'),
-									),
-									'leftBottom' 	=> array(
-										'select'	=> '',
-										'name' 		=> __('Left Bottom', 'st-gallery'),
-									),
-									'rightBottom' 	=> array(
-										'select'	=> '',
-										'name' 		=> __('Right Bottom', 'st-gallery'),
-									)
-								);
-						$this -> st_render_select('skitter_focus_position', __('Sets position for focus slideshow button', 'st-gallery'), __('Focus Position:', 'st-gallery'), $focus_position);
-						$this -> st_render_radio('skitter_fullscreen', __('Sets fullscreen', 'st-gallery'), __('Fullscreen:', 'st-gallery'), false);
-						
-						$skitter_animation = array(
-							'cube' 				=> array(
-								'select' 		=> 'selected="selected"',
-								'name' 			=> __('cube', 'st-gallery'),
-							),
-							'cubeRandom' 		=> array(
-								'select' 		=> '',
-								'name' 			=> __('cubeRandom', 'st-gallery'),
-							),
-							'block' 			=> array(
-								'select' 		=> '',
-								'name' 			=> __('block', 'st-gallery'),
-							),
-							'cubeStop' 			=> array(
-								'select' 		=> '',
-								'name' 			=> __('cubeStop', 'st-gallery'),
-							),
-							'cubeHide' 			=> array(
-								'select' 		=> '',
-								'name' 			=> __('cubeHide', 'st-gallery'),
-							),
-							'cubeSize' 			=> array(
-								'select' 		=> '' ,
-								'name' 			=> __('cubeSize', 'st-gallery'),
-							),
-							'horizontal' 		=> array(
-								'select' 		=> '',
-								'name' 			=> __('horizontal', 'st-gallery'),
-							),
-							'showBars' 			=> array(
-								'select' 		=> '',
-								'name' 			=> __('showBars', 'st-gallery'),
-							),
-							'showBarsRandom'	=> array(
-								'select' 		=> '',
-								'name' 			=> __('showBarsRandom', 'st-gallery'),
-							),
-							'tube' 				=> array(
-								'select' 		=> '',
-								'name' 			=> __('tube', 'st-gallery'),
-							),
-							'fade' 				=> array(
-								'select' 		=> '',
-								'name' 			=> __('fade', 'st-gallery'),
-							),
-							'fadeFour' 			=> array(
-								'select' 		=> '',
-								'name' 			=> __('fadeFour', 'st-gallery'),
-							),
-							'paralell' 			=> array(
-								'select' 		=> '',
-								'name' 			=> __('paralell', 'st-gallery'),
-							),
-							'blind' 			=> array(
-								'select' 		=> '',
-								'name' 			=> __('blind', 'st-gallery'),
-							),
-							'blindHeight' 		=> array(
-								'select' 		=> '',
-								'name' 			=> __('blindHeight', 'st-gallery'),
-							),
-							'blindWidth' 		=> array(
-								'select' 		=> '' ,
-								'name' 			=> __('blindWidth', 'st-gallery'),
-							),
-							'directionTop' 		=> array(
-								'select' 		=> '',
-								'name' 			=> __('directionTop', 'st-gallery'),
-							),
-							'directionBottom' 	=> array(
-								'select' 		=> '',
-								'name' 			=> __('directionBottom', 'st-gallery'),
-							),
-							'directionRight'	=> array(
-								'select' 		=> '',
-								'name' 			=> __('directionRight', 'st-gallery'),
-							),
-							'directionLeft' 	=> array(
-								'select' 		=> '',
-								'name' 			=> __('directionLeft', 'st-gallery'),
-							),
-							'cubeStopRandom' 	=> array(
-								'select' 		=> '',
-								'name' 			=> __('cubeStopRandom', 'st-gallery'),
-							),
-							'cubeSpread' 		=> array(
-								'select' 		=> '',
-								'name' 			=> __('cubeSpread', 'st-gallery'),
-							),
-							'cubeJelly' 		=> array(
-								'select' 		=> '',
-								'name' 			=> __('cubeJelly', 'st-gallery'),
-							),
-							'glassCube' 		=> array(
-								'select' 		=> '',
-								'name' 			=> __('glassCube', 'st-gallery'),
-							),
-							'glassBlock' 		=> array(
-								'select' 		=> '',
-								'name' 			=> __('glassBlock', 'st-gallery'),
-							),
-							'circles' 			=> array(
-								'select' 		=> '',
-								'name' 			=> __('circles', 'st-gallery'),
-							),
-							'circlesInside' 	=> array(
-								'select' 		=> '',
-								'name' 			=> __('circlesInside', 'st-gallery'),
-							),
-							'circlesRotate' 	=> array(
-								'select' 		=> '',
-								'name' 			=> __('circlesRotate', 'st-gallery'),
-							),
-							'cubeShow' 			=> array(
-								'select' 		=> '',
-								'name' 			=> __('cubeShow', 'st-gallery'),
-							),
-							'upBars' 			=> array(
-								'select' 		=> '',
-								'name' 			=> __('upBars', 'st-gallery'),
-							),
-							'downBars' 			=> array(
-								'select' 		=> '',
-								'name' 			=> __('downBars', 'st-gallery'),
-							),
-							'hideBars' 			=> array(
-								'select' 		=> '',
-								'name' 			=> __('hideBars', 'st-gallery'),
-							),
-							'swapBars' 			=> array(
-								'select' 		=> '',
-								'name' 			=> __('swapBars', 'st-gallery'),
-							),
-							'swapBarsBack' 		=> array(
-								'select' 		=> '',
-								'name' 			=> __('swapBarsBack', 'st-gallery'),
-							),
-							'swapBlocks' 		=> array(
-								'select' 		=> '',
-								'name' 			=> __('swapBlocks', 'st-gallery'),
-							),
-							'cut' 				=> array(
-								'select' 		=> '',
-								'name' 			=> __('cut', 'st-gallery'),
-							),
-							'random' 			=> array(
-								'select' 		=> '',
-								'name' 			=> __('random', 'st-gallery'),
-							),
-							'randomSmart' 		=> array(
-								'select' 		=> '',
-								'name' 			=> __('randomSmart', 'st-gallery'),
-							),
-						);
-						$this -> st_render_select('skitter_animation', __('Sets animation', 'st-gallery'), __('Animation:', 'st-gallery'), $skitter_animation);
-						
-						$skitter_theme = array(
-									'default' 		=> array(
-										'select' 	=> 'selected="selected"',
-										'name' 		=> __('Default', 'st-gallery'),
-									),
-									'minimalist' 	=> array(
-										'select' 	=> '',
-										'name' 		=> __('Minimalist', 'st-gallery'),
-									),
-									'round' 		=> array(
-										'select' 	=> '',
-										'name' 		=> __('Round', 'st-gallery'),
-									),
-									'clean' 		=> array(
-										'select' 	=> '',
-										'name' 		=> __('Clean', 'st-gallery'),
-									),
-									'square' 		=> array(
-										'select' 	=> '',
-										'name' 		=> __('Square', 'st-gallery'),
-									)
-								);
-						$this -> st_render_select('skitter_theme', __('Sets theme', 'st-gallery'), __('Theme:', 'st-gallery'), $skitter_theme);
-					?>
-					</div>
-				</div>
-				  
-				</div>
-				<?php $this -> StCopyright(); ?>
-			</div>
-	  	</form>
-	  	
-	<?php
-
-	if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['savechanges'])) {
-		$old_options_value = get_option('st_gallery_wp');
-		$id = $_POST['id'];
-		
-		$new_options_value = array();
-		
-		$new_options_value[$id][name] 							= 	$_POST['name'];
-		//===========  Settings ===========//
-		$new_options_value[$id][settings][source] 				= 	$_POST['source'];
-		$new_options_value[$id][settings][width] 				= 	$_POST['width'];
-		$new_options_value[$id][settings][width_end] 			= 	$_POST['width_end'];
-		$new_options_value[$id][settings][height] 				= 	$_POST['height'];
-		$new_options_value[$id][settings][style] 				= 	$_POST['style'];
-		//=========== Post Source  ===========//
-		$new_options_value[$id][post][post_category] 			= 	$_POST['post_category'];
-		$new_options_value[$id][post][order_by] 				= 	$_POST['order_by'];
-		$new_options_value[$id][post][limit] 					= 	$_POST['limit'];
-		$new_options_value[$id][post][first_img] 				= 	$_POST['first_img'];
-		//=========== Library Source ===========//
-		if (isset($_POST['image'])){
-			$i = 1;
-			foreach ($_POST['image'] as $key => $value) {
-				$new_options_value[$id][images][$i][url] 		=	$this -> relativeURL($value['url']);
-				$new_options_value[$id][images][$i][title]		= 	$value['title'];
-				$new_options_value[$id][images][$i][caption]	=	$value['caption'];
-				$new_options_value[$id][images][$i][url_2]		= 	$value['url_2'];
-				$i++;
-			}
-		}
-		//=========== Gallery Settings ===========//
-		$new_options_value[$id][gallery][show_control]	 		= 	$_POST['show_control'];
-		$new_options_value[$id][gallery][click_to_next]			= 	$_POST['click_to_next'];
-		$new_options_value[$id][gallery][show_counter] 			= 	$_POST['show_counter'];
-		$new_options_value[$id][gallery][show_prev_next] 		= 	$_POST['show_prev_next'];
-		$new_options_value[$id][gallery][image_crop] 			= 	$_POST['image_crop'];
-		$new_options_value[$id][gallery][imagePan] 				= 	$_POST['imagePan'];
-		$new_options_value[$id][gallery][showThumb] 			= 	$_POST['showThumb'];
-		$new_options_value[$id][gallery][thumb_crop] 			= 	$_POST['thumb_crop'];
-		$new_options_value[$id][gallery][transition] 			= 	$_POST['transition'];
-		$new_options_value[$id][gallery][transition_speed] 		= 	$_POST['transition_speed'];
-		$new_options_value[$id][gallery][lightbox] 				= 	$_POST['lightbox'];
-		$new_options_value[$id][gallery][image_delay] 			= 	$_POST['image_delay'];
-		$new_options_value[$id][gallery][show_title_image]		= 	$_POST['show_title_image'];
-		$new_options_value[$id][gallery][show_caption_image]	= 	$_POST['show_caption_image'];
-		$new_options_value[$id][gallery][theme] 				= 	$_POST['theme'];
-		$new_options_value[$id][gallery][responsive] 			= 	$_POST['responsive'];
-		//=========== Skitter Settings ===========//
-		$new_options_value[$id][skitter][auto_play]	 				= 	$_POST['skitter_auto_play'];
-		$new_options_value[$id][skitter][stop_over]					= 	$_POST['skitter_stop_over'];
-		$new_options_value[$id][skitter][interval] 					= 	$_POST['skitter_interval'];
-		$new_options_value[$id][skitter][show_randomly] 			= 	$_POST['skitter_show_randomly'];
-		$new_options_value[$id][skitter][controls] 					= 	$_POST['skitter_controls'];
-		$new_options_value[$id][skitter][controls_position] 		= 	$_POST['skitter_controls_position'];
-		$new_options_value[$id][skitter][progressbar] 				= 	$_POST['skitter_progressbar'];
-		$new_options_value[$id][skitter][label] 					= 	$_POST['skitter_label'];
-		$new_options_value[$id][skitter][labelAnimation] 			= 	$_POST['skitter_labelAnimation'];
-		$new_options_value[$id][skitter][navigation] 				= 	$_POST['skitter_navigation'];
-		$new_options_value[$id][skitter][navigation_position] 		= 	$_POST['skitter_navigation_position'];
-		$new_options_value[$id][skitter][preview] 					= 	$_POST['skitter_preview'];
-		$new_options_value[$id][skitter][next_prev]					= 	$_POST['skitter_next_prev'];
-		$new_options_value[$id][skitter][enable_navigation_keys]	= 	$_POST['skitter_enable_navigation_keys'];
-		$new_options_value[$id][skitter][hideTools] 				= 	$_POST['skitter_hideTools'];
-		$new_options_value[$id][skitter][focus] 					= 	$_POST['skitter_focus'];
-		$new_options_value[$id][skitter][focus_position] 			= 	$_POST['skitter_focus_position'];
-		$new_options_value[$id][skitter][fullscreen] 				= 	$_POST['skitter_fullscreen'];
-		$new_options_value[$id][skitter][animation] 				= 	$_POST['skitter_animation'];
-		$new_options_value[$id][skitter][theme] 					= 	$_POST['skitter_theme'];
-		
-		
-		if (!empty($old_options_value)) {
-			$new_options_value = array_merge($old_options_value, $new_options_value);
-		}
-		
-		update_option('st_gallery_wp', $new_options_value);
-		echo '<meta http-equiv="refresh" content="0; URL=admin.php?page=st_gallery&action=edit&id=' . $id . '&message=1">';
-	}
-	?>
-	</div>
-	 	
-	<?php 
 	}
 
 	/**
@@ -2164,4 +1619,4 @@ class StGallery{
 	
 	
 }
-	
+?>

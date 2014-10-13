@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ST_Gallery_WP\n"
-"POT-Creation-Date: 2014-09-25 14:46+0700\n"
-"PO-Revision-Date: 2014-09-25 14:46+0700\n"
+"POT-Creation-Date: 2014-10-09 17:57+0700\n"
+"PO-Revision-Date: 2014-10-09 17:58+0700\n"
 "Last-Translator: \n"
 "Language-Team: Khoapq <phanquockhoa@gmail.com>\n"
 "Language: en_US\n"
@@ -16,810 +16,826 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../st-gallery-wp.php:76 ../st-gallery.php:282
-msgid "All Gallery"
-msgstr ""
-
-#: ../st-gallery-wp.php:77 ../st-gallery.php:1489
-msgid "Add New Gallery"
-msgstr ""
-
-#: ../st-gallery-wp.php:77 ../st-gallery.php:130 ../st-gallery.php:749
-msgid "Add New"
-msgstr ""
-
-#: ../st-gallery-wp.php:126 ../st-gallery.php:153
-msgid "Remove"
-msgstr ""
-
-#: ../st-gallery-wp.php:127
-msgid "Title"
-msgstr ""
-
-#: ../st-gallery-wp.php:128
-msgid "Caption"
-msgstr ""
-
-#: ../st-gallery-wp.php:129
-msgid "Image URL"
-msgstr ""
-
-#: ../st-gallery-wp.php:130 ../st-gallery.php:41
-msgid "Gallery Removed."
-msgstr ""
-
-#: ../st-gallery-wp.php:131 ../st-gallery.php:799
-msgid "Drag & drop to sort"
-msgstr ""
-
-#: ../st-gallery.php:35
-msgid "Gallery added."
-msgstr ""
-
-#: ../st-gallery.php:38
-msgid "Gallery updated."
-msgstr ""
-
-#: ../st-gallery.php:44
-msgid "Gallery Imported."
-msgstr ""
-
-#: ../st-gallery.php:47
-msgid "Please select import file!"
-msgstr ""
-
-#: ../st-gallery.php:50
-msgid "Sample Gallery Imported."
-msgstr ""
-
-#: ../st-gallery.php:53 ../st-gallery.php:129
+#: ../classes/st-widget.php:13 ../st-gallery.php:57 ../st-gallery.php:133
 msgid "ST Gallery WP"
 msgstr ""
 
-#: ../st-gallery.php:131
-msgid "Import sample gallery"
+#: ../classes/st-widget.php:14
+msgid "ST Gallery WP Widget"
 msgstr ""
 
-#: ../st-gallery.php:139
-msgid "ID"
+#: ../classes/st-widget.php:54
+msgid "Title:"
 msgstr ""
 
-#: ../st-gallery.php:140
-msgid "Name"
+#: ../classes/st-widget.php:60
+msgid "Select gallery:"
 msgstr ""
 
-#: ../st-gallery.php:141
-msgid "Shortcode"
+#: ../classes/st-widget.php:71
+msgid "Insert"
 msgstr ""
 
-#: ../st-gallery.php:142
-msgid "Actions"
-msgstr ""
-
-#: ../st-gallery.php:152
+#: ../classes/st-widget.php:72 ../st-gallery.php:156
 msgid "Edit"
 msgstr ""
 
-#: ../st-gallery.php:159
+#: ../st-gallery-wp.php:75 ../st-gallery.php:286
+msgid "All Gallery"
+msgstr ""
+
+#: ../st-gallery-wp.php:76 ../st-gallery.php:1494
+msgid "Add New Gallery"
+msgstr ""
+
+#: ../st-gallery-wp.php:76 ../st-gallery.php:134 ../st-gallery.php:752
+msgid "Add New"
+msgstr ""
+
+#: ../st-gallery-wp.php:125 ../st-gallery.php:157
+msgid "Remove"
+msgstr ""
+
+#: ../st-gallery-wp.php:126
+msgid "Title"
+msgstr ""
+
+#: ../st-gallery-wp.php:127
+msgid "Caption"
+msgstr ""
+
+#: ../st-gallery-wp.php:128
+msgid "Image URL"
+msgstr ""
+
+#: ../st-gallery-wp.php:129 ../st-gallery.php:45
+msgid "Gallery Removed."
+msgstr ""
+
+#: ../st-gallery-wp.php:130 ../st-gallery.php:802
+msgid "Drag & drop to sort"
+msgstr ""
+
+#: ../st-gallery.php:39
+msgid "Gallery added."
+msgstr ""
+
+#: ../st-gallery.php:42
+msgid "Gallery updated."
+msgstr ""
+
+#: ../st-gallery.php:48
+msgid "Gallery Imported."
+msgstr ""
+
+#: ../st-gallery.php:51
+msgid "Please select import file!"
+msgstr ""
+
+#: ../st-gallery.php:54
+msgid "Sample Gallery Imported."
+msgstr ""
+
+#: ../st-gallery.php:135
+msgid "Import sample gallery"
+msgstr ""
+
+#: ../st-gallery.php:143
+msgid "ID"
+msgstr ""
+
+#: ../st-gallery.php:144
+msgid "Name"
+msgstr ""
+
+#: ../st-gallery.php:145
+msgid "Shortcode"
+msgstr ""
+
+#: ../st-gallery.php:146
+msgid "Actions"
+msgstr ""
+
+#: ../st-gallery.php:163
 msgid "No gallery! Please add new or import the gallery!"
 msgstr ""
 
-#: ../st-gallery.php:164
+#: ../st-gallery.php:168
 msgid "Remove gallery?"
 msgstr ""
 
-#: ../st-gallery.php:165
+#: ../st-gallery.php:169
 msgid ""
 "The gallery will be permanently deleted and cannot be recovered. Are you "
 "sure?"
 msgstr ""
 
-#: ../st-gallery.php:170
+#: ../st-gallery.php:174
 msgid "Import & Export Gallery"
 msgstr ""
 
-#: ../st-gallery.php:251
+#: ../st-gallery.php:255
 msgid "Invalid file or file size too big."
 msgstr ""
 
-#: ../st-gallery.php:257
+#: ../st-gallery.php:261
 msgid "Import Gallery"
 msgstr ""
 
-#: ../st-gallery.php:263
+#: ../st-gallery.php:267
 msgid "Import"
 msgstr ""
 
-#: ../st-gallery.php:279
+#: ../st-gallery.php:283
 msgid "Export Gallery"
 msgstr ""
 
-#: ../st-gallery.php:292
+#: ../st-gallery.php:296
 msgid "Export"
 msgstr ""
 
-#: ../st-gallery.php:337
+#: ../st-gallery.php:341
 msgid "Could not create a zip archive"
 msgstr ""
 
-#: ../st-gallery.php:367 ../st-gallery.php:402 ../st-gallery.php:409
-#: ../st-gallery.php:416
+#: ../st-gallery.php:371 ../st-gallery.php:406 ../st-gallery.php:413
+#: ../st-gallery.php:420
 msgid "There was a problem while creating "
 msgstr ""
 
-#: ../st-gallery.php:425
+#: ../st-gallery.php:429
 msgid "There was a problem while copy "
 msgstr ""
 
-#: ../st-gallery.php:451
+#: ../st-gallery.php:455
 msgid "Please enter gallery ID"
 msgstr ""
 
-#: ../st-gallery.php:474 ../st-gallery.php:592 ../st-gallery.php:747
+#: ../st-gallery.php:478 ../st-gallery.php:597 ../st-gallery.php:750
 msgid "Edit Gallery"
 msgstr ""
 
-#: ../st-gallery.php:667
+#: ../st-gallery.php:672
 msgid "Play"
 msgstr ""
 
-#: ../st-gallery.php:668
-msgid "Previous"
-msgstr ""
-
-#: ../st-gallery.php:669
-msgid "Next"
-msgstr ""
-
-#: ../st-gallery.php:670
+#: ../st-gallery.php:673
 msgid "Fullscreen"
 msgstr ""
 
-#: ../st-gallery.php:748 ../st-gallery.php:1489
+#: ../st-gallery.php:751 ../st-gallery.php:1494
 msgid "Back to the list"
 msgstr ""
 
-#: ../st-gallery.php:765 ../st-gallery.php:1502
+#: ../st-gallery.php:768 ../st-gallery.php:1507
 msgid "Enter name here"
 msgstr ""
 
-#: ../st-gallery.php:769 ../st-gallery.php:1507
+#: ../st-gallery.php:772 ../st-gallery.php:1512
 msgid "Library Source"
 msgstr ""
 
-#: ../st-gallery.php:770 ../st-gallery.php:1508
+#: ../st-gallery.php:773 ../st-gallery.php:1513
 msgid "Post Source"
 msgstr ""
 
-#: ../st-gallery.php:776 ../st-gallery.php:1514
+#: ../st-gallery.php:779 ../st-gallery.php:1519
 msgid "Go Library"
 msgstr ""
 
-#: ../st-gallery.php:803
+#: ../st-gallery.php:806
 msgid "Title: "
 msgstr ""
 
-#: ../st-gallery.php:804
+#: ../st-gallery.php:807
 msgid "Caption: "
 msgstr ""
 
-#: ../st-gallery.php:805
+#: ../st-gallery.php:808
 msgid "Image URL: "
 msgstr ""
 
-#: ../st-gallery.php:819 ../st-gallery.php:1521
+#: ../st-gallery.php:822 ../st-gallery.php:1526
 msgid "Select Category: "
 msgstr ""
 
-#: ../st-gallery.php:871 ../st-gallery.php:1566
+#: ../st-gallery.php:874 ../st-gallery.php:1571
 msgid "Settings"
 msgstr ""
 
-#: ../st-gallery.php:882 ../st-gallery.php:1572
+#: ../st-gallery.php:885 ../st-gallery.php:1577
 msgid "%"
 msgstr ""
 
-#: ../st-gallery.php:883 ../st-gallery.php:886 ../st-gallery.php:1573
-#: ../st-gallery.php:1576
+#: ../st-gallery.php:886 ../st-gallery.php:889 ../st-gallery.php:1578
+#: ../st-gallery.php:1581
 msgid "px"
 msgstr ""
 
-#: ../st-gallery.php:885 ../st-gallery.php:1575
+#: ../st-gallery.php:888 ../st-gallery.php:1580
 msgid "Manually set a gallery width"
 msgstr ""
 
-#: ../st-gallery.php:885 ../st-gallery.php:1575
+#: ../st-gallery.php:888 ../st-gallery.php:1580
 msgid "Width:"
 msgstr ""
 
-#: ../st-gallery.php:886 ../st-gallery.php:1576
+#: ../st-gallery.php:889 ../st-gallery.php:1581
 msgid "Manually set a gallery height"
 msgstr ""
 
-#: ../st-gallery.php:886 ../st-gallery.php:1576
+#: ../st-gallery.php:889 ../st-gallery.php:1581
 msgid "Height:"
 msgstr ""
 
-#: ../st-gallery.php:896 ../st-gallery.php:1580
+#: ../st-gallery.php:899 ../st-gallery.php:1585
 msgid "Library"
 msgstr ""
 
-#: ../st-gallery.php:900 ../st-gallery.php:1584
+#: ../st-gallery.php:903 ../st-gallery.php:1589
 msgid "Post"
 msgstr ""
 
-#: ../st-gallery.php:903 ../st-gallery.php:1587
+#: ../st-gallery.php:906 ../st-gallery.php:1592
 msgid "Sets image source for gallery"
 msgstr ""
 
-#: ../st-gallery.php:903 ../st-gallery.php:1587
+#: ../st-gallery.php:906 ../st-gallery.php:1592
 msgid "Source:"
 msgstr ""
 
-#: ../st-gallery.php:925 ../st-gallery.php:1602
+#: ../st-gallery.php:928 ../st-gallery.php:1607
 msgid "Gallery Settings"
 msgstr ""
 
-#: ../st-gallery.php:930 ../st-gallery.php:1005 ../st-gallery.php:1607
-#: ../st-gallery.php:1667
+#: ../st-gallery.php:933 ../st-gallery.php:1009 ../st-gallery.php:1612
+#: ../st-gallery.php:1673
 msgid "Show control"
 msgstr ""
 
-#: ../st-gallery.php:930 ../st-gallery.php:1005 ../st-gallery.php:1607
-#: ../st-gallery.php:1667
+#: ../st-gallery.php:933 ../st-gallery.php:1009 ../st-gallery.php:1612
+#: ../st-gallery.php:1673
 msgid "Show Control:"
 msgstr ""
 
-#: ../st-gallery.php:931 ../st-gallery.php:1608
+#: ../st-gallery.php:934 ../st-gallery.php:1613
 msgid "Click to next"
 msgstr ""
 
-#: ../st-gallery.php:931 ../st-gallery.php:1608
+#: ../st-gallery.php:934 ../st-gallery.php:1613
 msgid "Click To Next:"
 msgstr ""
 
-#: ../st-gallery.php:932 ../st-gallery.php:1609
+#: ../st-gallery.php:935 ../st-gallery.php:1614
 msgid "Toggles the counter"
 msgstr ""
 
-#: ../st-gallery.php:932 ../st-gallery.php:1609
+#: ../st-gallery.php:935 ../st-gallery.php:1614
 msgid "Show Counter:"
 msgstr ""
 
-#: ../st-gallery.php:933 ../st-gallery.php:1610
+#: ../st-gallery.php:936 ../st-gallery.php:1615
 msgid "Toggles the image navigation arrows"
 msgstr ""
 
-#: ../st-gallery.php:933 ../st-gallery.php:1610
+#: ../st-gallery.php:936 ../st-gallery.php:1615
 msgid "Show Prev/Next:"
 msgstr ""
 
-#: ../st-gallery.php:934 ../st-gallery.php:1611
+#: ../st-gallery.php:937 ../st-gallery.php:1616
 msgid "Defines gallery will crop the image"
 msgstr ""
 
-#: ../st-gallery.php:934 ../st-gallery.php:1611
+#: ../st-gallery.php:937 ../st-gallery.php:1616
 msgid "Image Crop:"
 msgstr ""
 
-#: ../st-gallery.php:935 ../st-gallery.php:1612
+#: ../st-gallery.php:938 ../st-gallery.php:1617
 msgid "Toggles the image pan effect"
 msgstr ""
 
-#: ../st-gallery.php:935 ../st-gallery.php:1612
+#: ../st-gallery.php:938 ../st-gallery.php:1617
 msgid "Image Pan:"
 msgstr ""
 
-#: ../st-gallery.php:936 ../st-gallery.php:1613
+#: ../st-gallery.php:939 ../st-gallery.php:1618
 msgid "Toggles the thumbnail"
 msgstr ""
 
-#: ../st-gallery.php:936 ../st-gallery.php:1613
+#: ../st-gallery.php:939 ../st-gallery.php:1618
 msgid "Show Thumbnails:"
 msgstr ""
 
-#: ../st-gallery.php:937 ../st-gallery.php:1614
+#: ../st-gallery.php:940 ../st-gallery.php:1619
 msgid "Defines gallery will crop the thumbnail"
 msgstr ""
 
-#: ../st-gallery.php:937 ../st-gallery.php:1614
+#: ../st-gallery.php:940 ../st-gallery.php:1619
 msgid "Thumb Crop:"
 msgstr ""
 
-#: ../st-gallery.php:950 ../st-gallery.php:1618
+#: ../st-gallery.php:953 ../st-gallery.php:1623
 msgid "Fade Slide"
 msgstr ""
 
-#: ../st-gallery.php:954 ../st-gallery.php:1622
+#: ../st-gallery.php:957 ../st-gallery.php:1627
 msgid "Flash"
 msgstr ""
 
-#: ../st-gallery.php:958 ../st-gallery.php:1626
+#: ../st-gallery.php:961 ../st-gallery.php:1631
 msgid "Pulse"
 msgstr ""
 
-#: ../st-gallery.php:962 ../st-gallery.php:1630
+#: ../st-gallery.php:965 ../st-gallery.php:1635
 msgid "Slide"
 msgstr ""
 
-#: ../st-gallery.php:966 ../st-gallery.php:1634
+#: ../st-gallery.php:969 ../st-gallery.php:1639
 msgid "Fade"
 msgstr ""
 
-#: ../st-gallery.php:969 ../st-gallery.php:1637
+#: ../st-gallery.php:972 ../st-gallery.php:1642
 msgid "Defines what transition to use"
 msgstr ""
 
-#: ../st-gallery.php:969 ../st-gallery.php:1637
+#: ../st-gallery.php:972 ../st-gallery.php:1642
 msgid "Transition:"
 msgstr ""
 
-#: ../st-gallery.php:970 ../st-gallery.php:1638
+#: ../st-gallery.php:973 ../st-gallery.php:1643
 msgid "Defines the speed of the transition"
 msgstr ""
 
-#: ../st-gallery.php:970 ../st-gallery.php:1638
+#: ../st-gallery.php:973 ../st-gallery.php:1643
 msgid "Transition Speed:"
 msgstr ""
 
-#: ../st-gallery.php:970 ../st-gallery.php:1638
+#: ../st-gallery.php:973 ../st-gallery.php:1643
 msgid "(100 = 1 sec)"
 msgstr ""
 
-#: ../st-gallery.php:971 ../st-gallery.php:1639
+#: ../st-gallery.php:974 ../st-gallery.php:1644
 msgid "Zoom in when the user clicks on an image"
 msgstr ""
 
-#: ../st-gallery.php:971 ../st-gallery.php:1639
+#: ../st-gallery.php:974 ../st-gallery.php:1644
 msgid "LightBox:"
 msgstr ""
 
-#: ../st-gallery.php:972 ../st-gallery.php:1640
+#: ../st-gallery.php:975 ../st-gallery.php:1645
 msgid "Enter 0 to disable autoplay gallery"
 msgstr ""
 
-#: ../st-gallery.php:972 ../st-gallery.php:1640
+#: ../st-gallery.php:975 ../st-gallery.php:1645
 msgid "Image Delay:"
 msgstr ""
 
-#: ../st-gallery.php:972 ../st-gallery.php:1003 ../st-gallery.php:1640
-#: ../st-gallery.php:1665
+#: ../st-gallery.php:975 ../st-gallery.php:1007 ../st-gallery.php:1645
+#: ../st-gallery.php:1671
 msgid "(1000 = 1 sec)"
 msgstr ""
 
-#: ../st-gallery.php:973 ../st-gallery.php:1039 ../st-gallery.php:1641
-#: ../st-gallery.php:1692
+#: ../st-gallery.php:976 ../st-gallery.php:1043 ../st-gallery.php:1646
+#: ../st-gallery.php:1698
 msgid "Toggles the title"
 msgstr ""
 
-#: ../st-gallery.php:973 ../st-gallery.php:1641
+#: ../st-gallery.php:976 ../st-gallery.php:1646
 msgid "Show Title Image:"
 msgstr ""
 
-#: ../st-gallery.php:974 ../st-gallery.php:1642
+#: ../st-gallery.php:977 ../st-gallery.php:1647
 msgid "Toggles the caption"
 msgstr ""
 
-#: ../st-gallery.php:974 ../st-gallery.php:1642
+#: ../st-gallery.php:977 ../st-gallery.php:1647
 msgid "Show Caption Image:"
 msgstr ""
 
-#: ../st-gallery.php:984 ../st-gallery.php:1646
+#: ../st-gallery.php:987 ../st-gallery.php:1651
 msgid "Classic"
 msgstr ""
 
-#: ../st-gallery.php:988 ../st-gallery.php:1650
+#: ../st-gallery.php:991 ../st-gallery.php:1655
 msgid "Style 2"
 msgstr ""
 
-#: ../st-gallery.php:991 ../st-gallery.php:1653
+#: ../st-gallery.php:994 ../st-gallery.php:1658
 msgid "Sets theme for gallery"
 msgstr ""
 
-#: ../st-gallery.php:991 ../st-gallery.php:1383 ../st-gallery.php:1653
-#: ../st-gallery.php:1950
+#: ../st-gallery.php:994 ../st-gallery.php:1387 ../st-gallery.php:1658
+#: ../st-gallery.php:1956
 msgid "Theme:"
 msgstr ""
 
-#: ../st-gallery.php:996 ../st-gallery.php:1658
+#: ../st-gallery.php:995 ../st-gallery.php:1659
+msgid "Responsive"
+msgstr ""
+
+#: ../st-gallery.php:995 ../st-gallery.php:1659
+msgid "Responsive:"
+msgstr ""
+
+#: ../st-gallery.php:1000 ../st-gallery.php:1664
 msgid "Skitter Settings"
 msgstr ""
 
-#: ../st-gallery.php:1001 ../st-gallery.php:1663
+#: ../st-gallery.php:1005 ../st-gallery.php:1669
 msgid "Auto play"
 msgstr ""
 
-#: ../st-gallery.php:1001 ../st-gallery.php:1663
+#: ../st-gallery.php:1005 ../st-gallery.php:1669
 msgid "Auto Play:"
 msgstr ""
 
-#: ../st-gallery.php:1002 ../st-gallery.php:1664
+#: ../st-gallery.php:1006 ../st-gallery.php:1670
 msgid "Stop animation to move mouse over it"
 msgstr ""
 
-#: ../st-gallery.php:1002 ../st-gallery.php:1664
+#: ../st-gallery.php:1006 ../st-gallery.php:1670
 msgid "Stop Over:"
 msgstr ""
 
-#: ../st-gallery.php:1003 ../st-gallery.php:1665
+#: ../st-gallery.php:1007 ../st-gallery.php:1671
 msgid "Interval between transitions"
 msgstr ""
 
-#: ../st-gallery.php:1003 ../st-gallery.php:1665
+#: ../st-gallery.php:1007 ../st-gallery.php:1671
 msgid "Interval:"
 msgstr ""
 
-#: ../st-gallery.php:1004 ../st-gallery.php:1666
+#: ../st-gallery.php:1008 ../st-gallery.php:1672
 msgid "Toggles the randomly sliders"
 msgstr ""
 
-#: ../st-gallery.php:1004 ../st-gallery.php:1666
+#: ../st-gallery.php:1008 ../st-gallery.php:1672
 msgid "Show Randomly:"
 msgstr ""
 
-#: ../st-gallery.php:1018 ../st-gallery.php:1099 ../st-gallery.php:1128
-#: ../st-gallery.php:1671 ../st-gallery.php:1730 ../st-gallery.php:1750
+#: ../st-gallery.php:1022 ../st-gallery.php:1103 ../st-gallery.php:1132
+#: ../st-gallery.php:1677 ../st-gallery.php:1736 ../st-gallery.php:1756
 msgid "Center"
 msgstr ""
 
-#: ../st-gallery.php:1022 ../st-gallery.php:1132 ../st-gallery.php:1675
-#: ../st-gallery.php:1754
+#: ../st-gallery.php:1026 ../st-gallery.php:1136 ../st-gallery.php:1681
+#: ../st-gallery.php:1760
 msgid "Left Top"
 msgstr ""
 
-#: ../st-gallery.php:1026 ../st-gallery.php:1136 ../st-gallery.php:1679
-#: ../st-gallery.php:1758
+#: ../st-gallery.php:1030 ../st-gallery.php:1140 ../st-gallery.php:1685
+#: ../st-gallery.php:1764
 msgid "Right Top"
 msgstr ""
 
-#: ../st-gallery.php:1030 ../st-gallery.php:1140 ../st-gallery.php:1683
-#: ../st-gallery.php:1762
+#: ../st-gallery.php:1034 ../st-gallery.php:1144 ../st-gallery.php:1689
+#: ../st-gallery.php:1768
 msgid "Left Bottom"
 msgstr ""
 
-#: ../st-gallery.php:1034 ../st-gallery.php:1144 ../st-gallery.php:1687
-#: ../st-gallery.php:1766
+#: ../st-gallery.php:1038 ../st-gallery.php:1148 ../st-gallery.php:1693
+#: ../st-gallery.php:1772
 msgid "Right Bottom"
 msgstr ""
 
-#: ../st-gallery.php:1037 ../st-gallery.php:1690
+#: ../st-gallery.php:1041 ../st-gallery.php:1696
 msgid "Defines controls position"
 msgstr ""
 
-#: ../st-gallery.php:1037 ../st-gallery.php:1690
+#: ../st-gallery.php:1041 ../st-gallery.php:1696
 msgid "Controls Position:"
 msgstr ""
 
-#: ../st-gallery.php:1038 ../st-gallery.php:1691
+#: ../st-gallery.php:1042 ../st-gallery.php:1697
 msgid "Show/hide progress bar"
 msgstr ""
 
-#: ../st-gallery.php:1038 ../st-gallery.php:1691
+#: ../st-gallery.php:1042 ../st-gallery.php:1697
 msgid "Progress Bar:"
 msgstr ""
 
-#: ../st-gallery.php:1039 ../st-gallery.php:1692
+#: ../st-gallery.php:1043 ../st-gallery.php:1698
 msgid "Show Title:"
 msgstr ""
 
-#: ../st-gallery.php:1051 ../st-gallery.php:1696
+#: ../st-gallery.php:1055 ../st-gallery.php:1702
 msgid "Slide Up"
 msgstr ""
 
-#: ../st-gallery.php:1055 ../st-gallery.php:1103 ../st-gallery.php:1700
-#: ../st-gallery.php:1734
+#: ../st-gallery.php:1059 ../st-gallery.php:1107 ../st-gallery.php:1706
+#: ../st-gallery.php:1740
 msgid "Left"
 msgstr ""
 
-#: ../st-gallery.php:1059 ../st-gallery.php:1107 ../st-gallery.php:1704
-#: ../st-gallery.php:1738
+#: ../st-gallery.php:1063 ../st-gallery.php:1111 ../st-gallery.php:1710
+#: ../st-gallery.php:1744
 msgid "Right"
 msgstr ""
 
-#: ../st-gallery.php:1063 ../st-gallery.php:1708
+#: ../st-gallery.php:1067 ../st-gallery.php:1714
 msgid "Fixed"
 msgstr ""
 
-#: ../st-gallery.php:1066 ../st-gallery.php:1711
+#: ../st-gallery.php:1070 ../st-gallery.php:1717
 msgid "Defines title animation"
 msgstr ""
 
-#: ../st-gallery.php:1066 ../st-gallery.php:1711
+#: ../st-gallery.php:1070 ../st-gallery.php:1717
 msgid "Title Animation:"
 msgstr ""
 
-#: ../st-gallery.php:1077 ../st-gallery.php:1715
+#: ../st-gallery.php:1081 ../st-gallery.php:1721
 msgid "Thumbnails"
 msgstr ""
 
-#: ../st-gallery.php:1081 ../st-gallery.php:1719
+#: ../st-gallery.php:1085 ../st-gallery.php:1725
 msgid "Numbers"
 msgstr ""
 
-#: ../st-gallery.php:1085 ../st-gallery.php:1723
+#: ../st-gallery.php:1089 ../st-gallery.php:1729
 msgid "Dots"
 msgstr ""
 
-#: ../st-gallery.php:1088 ../st-gallery.php:1726
+#: ../st-gallery.php:1092 ../st-gallery.php:1732
 msgid "Sets navigation style"
 msgstr ""
 
-#: ../st-gallery.php:1088 ../st-gallery.php:1726
+#: ../st-gallery.php:1092 ../st-gallery.php:1732
 msgid "Navigation Style:"
 msgstr ""
 
-#: ../st-gallery.php:1110 ../st-gallery.php:1741
+#: ../st-gallery.php:1114 ../st-gallery.php:1747
 msgid "Sets navigation position"
 msgstr ""
 
-#: ../st-gallery.php:1110 ../st-gallery.php:1741
+#: ../st-gallery.php:1114 ../st-gallery.php:1747
 msgid "Navigation Position:"
 msgstr ""
 
-#: ../st-gallery.php:1111 ../st-gallery.php:1742
+#: ../st-gallery.php:1115 ../st-gallery.php:1748
 msgid "Thumbnail previews when you hover over the dots"
 msgstr ""
 
-#: ../st-gallery.php:1111 ../st-gallery.php:1742
+#: ../st-gallery.php:1115 ../st-gallery.php:1748
 msgid "Preview:"
 msgstr ""
 
-#: ../st-gallery.php:1112 ../st-gallery.php:1743
+#: ../st-gallery.php:1116 ../st-gallery.php:1749
 msgid "Show the navigation buttons next/previous"
 msgstr ""
 
-#: ../st-gallery.php:1112 ../st-gallery.php:1743
+#: ../st-gallery.php:1116 ../st-gallery.php:1749
 msgid "Show Next/Prev:"
 msgstr ""
 
-#: ../st-gallery.php:1113 ../st-gallery.php:1744
+#: ../st-gallery.php:1117 ../st-gallery.php:1750
 msgid "Using key < > to previous/next sliders"
 msgstr ""
 
-#: ../st-gallery.php:1113 ../st-gallery.php:1744
+#: ../st-gallery.php:1117 ../st-gallery.php:1750
 msgid "Navigation Keys:"
 msgstr ""
 
-#: ../st-gallery.php:1114 ../st-gallery.php:1745
+#: ../st-gallery.php:1118 ../st-gallery.php:1751
 msgid "Auto-hide the navigation buttons, controls, thumbs"
 msgstr ""
 
-#: ../st-gallery.php:1114 ../st-gallery.php:1745
+#: ../st-gallery.php:1118 ../st-gallery.php:1751
 msgid "Auto hide:"
 msgstr ""
 
-#: ../st-gallery.php:1115 ../st-gallery.php:1746
+#: ../st-gallery.php:1119 ../st-gallery.php:1752
 msgid "Focus slideshow"
 msgstr ""
 
-#: ../st-gallery.php:1115 ../st-gallery.php:1746
+#: ../st-gallery.php:1119 ../st-gallery.php:1752
 msgid "Focus Slideshow:"
 msgstr ""
 
-#: ../st-gallery.php:1147 ../st-gallery.php:1769
+#: ../st-gallery.php:1151 ../st-gallery.php:1775
 msgid "Sets position for focus slideshow button"
 msgstr ""
 
-#: ../st-gallery.php:1147 ../st-gallery.php:1769
+#: ../st-gallery.php:1151 ../st-gallery.php:1775
 msgid "Focus Position:"
 msgstr ""
 
-#: ../st-gallery.php:1148 ../st-gallery.php:1770
+#: ../st-gallery.php:1152 ../st-gallery.php:1776
 msgid "Sets fullscreen"
 msgstr ""
 
-#: ../st-gallery.php:1148 ../st-gallery.php:1770
+#: ../st-gallery.php:1152 ../st-gallery.php:1776
 msgid "Fullscreen:"
 msgstr ""
 
-#: ../st-gallery.php:1200 ../st-gallery.php:1775
+#: ../st-gallery.php:1204 ../st-gallery.php:1781
 msgid "cube"
 msgstr ""
 
-#: ../st-gallery.php:1204 ../st-gallery.php:1779
+#: ../st-gallery.php:1208 ../st-gallery.php:1785
 msgid "cubeRandom"
 msgstr ""
 
-#: ../st-gallery.php:1208 ../st-gallery.php:1783
+#: ../st-gallery.php:1212 ../st-gallery.php:1789
 msgid "block"
 msgstr ""
 
-#: ../st-gallery.php:1212 ../st-gallery.php:1787
+#: ../st-gallery.php:1216 ../st-gallery.php:1793
 msgid "cubeStop"
 msgstr ""
 
-#: ../st-gallery.php:1216 ../st-gallery.php:1791
+#: ../st-gallery.php:1220 ../st-gallery.php:1797
 msgid "cubeHide"
 msgstr ""
 
-#: ../st-gallery.php:1220 ../st-gallery.php:1795
+#: ../st-gallery.php:1224 ../st-gallery.php:1801
 msgid "cubeSize"
 msgstr ""
 
-#: ../st-gallery.php:1224 ../st-gallery.php:1799
+#: ../st-gallery.php:1228 ../st-gallery.php:1805
 msgid "horizontal"
 msgstr ""
 
-#: ../st-gallery.php:1228 ../st-gallery.php:1803
+#: ../st-gallery.php:1232 ../st-gallery.php:1809
 msgid "showBars"
 msgstr ""
 
-#: ../st-gallery.php:1232 ../st-gallery.php:1807
+#: ../st-gallery.php:1236 ../st-gallery.php:1813
 msgid "showBarsRandom"
 msgstr ""
 
-#: ../st-gallery.php:1236 ../st-gallery.php:1811
+#: ../st-gallery.php:1240 ../st-gallery.php:1817
 msgid "tube"
 msgstr ""
 
-#: ../st-gallery.php:1240 ../st-gallery.php:1815
+#: ../st-gallery.php:1244 ../st-gallery.php:1821
 msgid "fade"
 msgstr ""
 
-#: ../st-gallery.php:1244 ../st-gallery.php:1819
+#: ../st-gallery.php:1248 ../st-gallery.php:1825
 msgid "fadeFour"
 msgstr ""
 
-#: ../st-gallery.php:1248 ../st-gallery.php:1823
+#: ../st-gallery.php:1252 ../st-gallery.php:1829
 msgid "paralell"
 msgstr ""
 
-#: ../st-gallery.php:1252 ../st-gallery.php:1827
+#: ../st-gallery.php:1256 ../st-gallery.php:1833
 msgid "blind"
 msgstr ""
 
-#: ../st-gallery.php:1256 ../st-gallery.php:1831
+#: ../st-gallery.php:1260 ../st-gallery.php:1837
 msgid "blindHeight"
 msgstr ""
 
-#: ../st-gallery.php:1260 ../st-gallery.php:1835
+#: ../st-gallery.php:1264 ../st-gallery.php:1841
 msgid "blindWidth"
 msgstr ""
 
-#: ../st-gallery.php:1264 ../st-gallery.php:1839
+#: ../st-gallery.php:1268 ../st-gallery.php:1845
 msgid "directionTop"
 msgstr ""
 
-#: ../st-gallery.php:1268 ../st-gallery.php:1843
+#: ../st-gallery.php:1272 ../st-gallery.php:1849
 msgid "directionBottom"
 msgstr ""
 
-#: ../st-gallery.php:1272 ../st-gallery.php:1847
+#: ../st-gallery.php:1276 ../st-gallery.php:1853
 msgid "directionRight"
 msgstr ""
 
-#: ../st-gallery.php:1276 ../st-gallery.php:1851
+#: ../st-gallery.php:1280 ../st-gallery.php:1857
 msgid "directionLeft"
 msgstr ""
 
-#: ../st-gallery.php:1280 ../st-gallery.php:1855
+#: ../st-gallery.php:1284 ../st-gallery.php:1861
 msgid "cubeStopRandom"
 msgstr ""
 
-#: ../st-gallery.php:1284 ../st-gallery.php:1859
+#: ../st-gallery.php:1288 ../st-gallery.php:1865
 msgid "cubeSpread"
 msgstr ""
 
-#: ../st-gallery.php:1288 ../st-gallery.php:1863
+#: ../st-gallery.php:1292 ../st-gallery.php:1869
 msgid "cubeJelly"
 msgstr ""
 
-#: ../st-gallery.php:1292 ../st-gallery.php:1867
+#: ../st-gallery.php:1296 ../st-gallery.php:1873
 msgid "glassCube"
 msgstr ""
 
-#: ../st-gallery.php:1296 ../st-gallery.php:1871
+#: ../st-gallery.php:1300 ../st-gallery.php:1877
 msgid "glassBlock"
 msgstr ""
 
-#: ../st-gallery.php:1300 ../st-gallery.php:1875
+#: ../st-gallery.php:1304 ../st-gallery.php:1881
 msgid "circles"
 msgstr ""
 
-#: ../st-gallery.php:1304 ../st-gallery.php:1879
+#: ../st-gallery.php:1308 ../st-gallery.php:1885
 msgid "circlesInside"
 msgstr ""
 
-#: ../st-gallery.php:1308 ../st-gallery.php:1883
+#: ../st-gallery.php:1312 ../st-gallery.php:1889
 msgid "circlesRotate"
 msgstr ""
 
-#: ../st-gallery.php:1312 ../st-gallery.php:1887
+#: ../st-gallery.php:1316 ../st-gallery.php:1893
 msgid "cubeShow"
 msgstr ""
 
-#: ../st-gallery.php:1316 ../st-gallery.php:1891
+#: ../st-gallery.php:1320 ../st-gallery.php:1897
 msgid "upBars"
 msgstr ""
 
-#: ../st-gallery.php:1320 ../st-gallery.php:1895
+#: ../st-gallery.php:1324 ../st-gallery.php:1901
 msgid "downBars"
 msgstr ""
 
-#: ../st-gallery.php:1324 ../st-gallery.php:1899
+#: ../st-gallery.php:1328 ../st-gallery.php:1905
 msgid "hideBars"
 msgstr ""
 
-#: ../st-gallery.php:1328 ../st-gallery.php:1903
+#: ../st-gallery.php:1332 ../st-gallery.php:1909
 msgid "swapBars"
 msgstr ""
 
-#: ../st-gallery.php:1332 ../st-gallery.php:1907
+#: ../st-gallery.php:1336 ../st-gallery.php:1913
 msgid "swapBarsBack"
 msgstr ""
 
-#: ../st-gallery.php:1336 ../st-gallery.php:1911
+#: ../st-gallery.php:1340 ../st-gallery.php:1917
 msgid "swapBlocks"
 msgstr ""
 
-#: ../st-gallery.php:1340 ../st-gallery.php:1915
+#: ../st-gallery.php:1344 ../st-gallery.php:1921
 msgid "cut"
 msgstr ""
 
-#: ../st-gallery.php:1344 ../st-gallery.php:1919
+#: ../st-gallery.php:1348 ../st-gallery.php:1925
 msgid "random"
 msgstr ""
 
-#: ../st-gallery.php:1348 ../st-gallery.php:1923
+#: ../st-gallery.php:1352 ../st-gallery.php:1929
 msgid "randomSmart"
 msgstr ""
 
-#: ../st-gallery.php:1351 ../st-gallery.php:1926
+#: ../st-gallery.php:1355 ../st-gallery.php:1932
 msgid "Sets animation"
 msgstr ""
 
-#: ../st-gallery.php:1351 ../st-gallery.php:1926
+#: ../st-gallery.php:1355 ../st-gallery.php:1932
 msgid "Animation:"
 msgstr ""
 
-#: ../st-gallery.php:1364 ../st-gallery.php:1931
+#: ../st-gallery.php:1368 ../st-gallery.php:1937
 msgid "Default"
 msgstr ""
 
-#: ../st-gallery.php:1368 ../st-gallery.php:1935
+#: ../st-gallery.php:1372 ../st-gallery.php:1941
 msgid "Minimalist"
 msgstr ""
 
-#: ../st-gallery.php:1372 ../st-gallery.php:1939
+#: ../st-gallery.php:1376 ../st-gallery.php:1945
 msgid "Round"
 msgstr ""
 
-#: ../st-gallery.php:1376 ../st-gallery.php:1943
+#: ../st-gallery.php:1380 ../st-gallery.php:1949
 msgid "Clean"
 msgstr ""
 
-#: ../st-gallery.php:1380 ../st-gallery.php:1947
+#: ../st-gallery.php:1384 ../st-gallery.php:1953
 msgid "Square"
 msgstr ""
 
-#: ../st-gallery.php:1383 ../st-gallery.php:1950
+#: ../st-gallery.php:1387 ../st-gallery.php:1956
 msgid "Sets theme"
 msgstr ""
 
-#: ../st-gallery.php:2055
+#: ../st-gallery.php:2062
 msgid "Yes"
 msgstr ""
 
-#: ../st-gallery.php:2056
+#: ../st-gallery.php:2063
 msgid "No"
 msgstr ""
 
-#: ../st-gallery.php:2097
+#: ../st-gallery.php:2104
 msgid "Abouts"
 msgstr ""
 
-#: ../st-gallery.php:2108
+#: ../st-gallery.php:2115
 msgid "Home"
 msgstr ""
 
-#: ../st-gallery.php:2111
+#: ../st-gallery.php:2118
 msgid "Submit Ticket"
 msgstr ""
 
-#: ../st-gallery.php:2114
+#: ../st-gallery.php:2121
 msgid "Forum"
 msgstr ""
 
-#: ../st-gallery.php:2117
+#: ../st-gallery.php:2125
 msgid "Document"
 msgstr ""

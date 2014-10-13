@@ -111,7 +111,7 @@
 						}else{
 							$('.wrap.st_gallery_wp').find('h2').append('<div id="message" class="updated below-h2"><p>'+st.gallery_removed+'</p></div>');
 						}
-						$('div#' + response).remove();
+						$('#'+$.trim(response)).remove();
 						$( '#remove-dialog-confirm' ).dialog( "close" );
 					});
 		         
@@ -224,7 +224,6 @@
 			
 		$("#style").change(function(){
 			var style = $(this).val();
-			console.log(style);
 			if (style=='gallery'){
 				$('.gallery-setting').css('display','block');
 				$('.skitter-setting').css('display','none');
@@ -243,5 +242,20 @@
 		});
 		
 	});
- 
+ 	
 })(jQuery);
+function st_gallery_edit(el){
+	var selectID = jQuery(el).attr('id');
+	var galleryID = jQuery('#'+selectID).val();
+	window.open('admin.php?page=st_gallery&action=edit&id='+galleryID);
+}
+
+function st_gallery_insert(el){
+	 var selectID = jQuery(el).attr('id');
+	 var galleryID = jQuery('#'+selectID).val();
+	 var id = parseInt(selectID.replace(/[^0-9]/gi, ''),10);
+	 var textarea = jQuery('#widget-st_gallery_widget-'+id+'-widgetHTML').val();
+	
+	 var newtext = textarea+'[st-gallery id="'+galleryID+'"]';
+	 jQuery('#widget-st_gallery_widget-'+id+'-widgetHTML').val(newtext);
+}
