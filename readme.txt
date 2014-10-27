@@ -1,7 +1,7 @@
 === ST Gallery WP ===
 Contributors: beautifultemplates
 Tags: gallery, slider, slideshow, galleria, skitter
-Donate link: http://beautiful-templates.com
+Donate link: http://beautiful-templates.com/evo/st-gallery-responsive-slider-wordpress-plugin/
 Requires at least: 4.0
 Tested up to: 4.0
 Stable tag: 1.0.2
@@ -35,6 +35,10 @@ For more information you can check in our site <a href="http://beautiful-templat
 - Drag & Drop to sort images
 - Using images in Library, Posts and images URL
 - Import & Export gallery easy...
+
+Do you need more support or customize. Please visit our page http://beautiful-templates.com/evo/st-gallery-responsive-slider-wordpress-plugin/
+
+<a href="http://beautiful-templates.com/evo/category/products/wordpress-plugin/">Fee wordpress plugin</a> - <a href="http://beautiful-templates.com/evo/category/products/wordpress-themes/"> Premium Wordpress Theme </a>
 
 == Installation ==
 1. Upload the entire "st-gallery-wp" folder to the "wp-content/plugins/" directory.
