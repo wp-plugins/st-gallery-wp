@@ -1,18 +1,18 @@
 === ST Gallery WP ===
 Contributors: beautifultemplates
-Tags: gallery, slider, slideshow, galleria, skitter
+Tags: gallery, slider, slideshow, galleria, skitter, photos, images
 Donate link: http://beautiful-templates.com
 Requires at least: 4.0
 Tested up to: 4.0
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-ST Galelry WP is great plugin to create a beautiful slider for your site.
+ST Gallery WP is great plugin to create a beautiful image slider for your site.
 
 
 == Description ==
-ST Galelry WP is great plugin to create a beautiful slider for your site.
+ST Gallery WP is great plugin to create a beautiful slider for your site.
 
 Please check demos:
 
