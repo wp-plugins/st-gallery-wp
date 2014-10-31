@@ -1,6 +1,6 @@
 === ST Gallery WP ===
 Contributors: beautifultemplates
-Tags: gallery, slider, slideshow, galleria, skitter, photos, images
+Tags: album, albums, best gallery plugin, free photo gallery, galleries, image, image album, image gallery, lightbox, media, media gallery, photo, photo albums, photo gallery, photographer, photography, picture, Picture Gallery, pictures, responsive, responsive galleries, responsive gallery, slideshow galleries, slideshow gallery, slideshows, wordpress gallery plugin, wordpress photo gallery plugin, wordpress responsive gallery, wp gallery, wp gallery plugins
 Donate link: http://beautiful-templates.com
 Requires at least: 4.0
 Tested up to: 4.0
