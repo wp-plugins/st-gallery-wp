@@ -3,7 +3,7 @@
 Plugin: ST Galleria
 Plugin URL: http://beautiful-templates.com
 Description: Create gallery from your image post with Galleria library & Skitter.
-Version: 1.0.2
+Version: 1.0.3
 Author: Beautiful Templates
 Author URI: http://beautiful-templates.com
 License:  GPL2
@@ -475,7 +475,7 @@ class StGallery{
 			<?php if ( is_super_admin()) { ?>
 				<div class="st-gallery-edit"><a href="<?php echo get_home_url(); ?>/wp-admin/admin.php?page=st_gallery&action=edit&id=<?php echo $id; ?>" class="edit-link"><?php _e('Edit Gallery', 'st-gallery'); ?></a></div>
 			<?php }	?>
-			<div class="box_skitter <?php echo $newid; ?>" style="width: <?php echo $gallery['settings']['width'].$gallery['settings']['width_end'] ?>; height: <?php echo $gallery['settings']['height']?>px;">
+			<div class="box_skitter <?php echo $newid; ?>" style="background-color: <?php echo $this->valString($gallery['settings']['bgcolor'], '#000000') ?>; width: <?php echo $gallery['settings']['width'].$gallery['settings']['width_end'] ?>; height: <?php echo $gallery['settings']['height']?>px;">
 				<ul>
 				<?php 
 				if (isset($gallery['settings']['source']) && esc_attr($gallery['settings']['source']) == 'Library'){
@@ -675,6 +675,7 @@ class StGallery{
 			} 
 			?>
 	</div> 
+
 	<script type="text/javascript">
 		(function($){
 			<?php
@@ -686,6 +687,7 @@ class StGallery{
 		<?php	}
 			} ?>
 			$(document).ready(function(){
+				
 					Galleria.run('#<?php echo $newid; ?>.<?php echo $this -> valString($gallery['gallery']['theme'], 'classic'); ?>',{
 						theme: 		'<?php echo $this -> valString($gallery['gallery']['theme'], 'classic'); ?>',
 						autoplay: 	<?php echo $this -> valInt($gallery['gallery']['image_delay'], 3000 ); ?>,
@@ -714,6 +716,13 @@ class StGallery{
 								event.preventDefault();
 								gallery.enterFullscreen();
 							});
+							
+							var bgcolor = "<?php echo $this->valString($gallery['settings']['bgcolor'], '#000000') ?>";
+							gallery.$('container').css('background', bgcolor);
+							this.bind('fullscreen_enter', function(e) {
+							    gallery.$('container').css('background', bgcolor);
+							});
+        
 						},
 						showCounter: 		<?php echo $this -> valBoolean($gallery['gallery']['show_counter'], true); ?>,
 						showImagenav: 		<?php echo $this -> valBoolean($gallery['gallery']['show_prev_next'], true); ?>,
@@ -901,6 +910,7 @@ class StGallery{
 								</select>';
 								$this -> st_render_textbox('width', __('Manually set a gallery width', 'st-gallery'), __('Width:', 'st-gallery'), 'number', $this->valInt($gallery['settings']['width'], 100), 'min="1"', $width_end);
 								$this -> st_render_textbox('height', __('Manually set a gallery height', 'st-gallery'), __('Height:', 'st-gallery'), 'number', $this->valInt($gallery['settings']['height'], 500), '', __('px', 'st-gallery'));
+								$this -> st_render_textbox('bgcolor', __('Manually set background color', 'st-gallery'), __('Background Color:', 'st-gallery'), 'text', $this->valString($gallery['settings']['bgcolor'], '#000000'), '', '');
 								
 								switch ($this->valString($gallery['settings']['source'], 'Library')) {
 									case 'Library': 	$Library_selected 		= 'selected="selected"'; break;
@@ -1431,6 +1441,7 @@ class StGallery{
 		$new_options_value[$id][settings][width] 				= 	$_POST['width'];
 		$new_options_value[$id][settings][width_end] 			= 	$_POST['width_end'];
 		$new_options_value[$id][settings][height] 				= 	$_POST['height'];
+		$new_options_value[$id][settings][bgcolor] 				= 	$_POST['bgcolor'];
 		$new_options_value[$id][settings][style] 				= 	$_POST['style'];
 		//=========== Post Source  ===========//
 		$new_options_value[$id][post][post_category] 			= 	$_POST['post_category'];

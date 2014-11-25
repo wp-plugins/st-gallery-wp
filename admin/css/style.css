@@ -69,7 +69,7 @@
 	border: 1px solid #dfdfdf;
 	border-radius: 0px 0px 3px 3px;
 	background: #fff;
-	overflow: hidden;
+	overflow: visible;
 	margin-bottom: 10px;
 	border-top: 0px;
 	top: -1px;
@@ -656,6 +656,16 @@ i.mce-ico.mce-i-icon.st_button_get_gallery{
 .st_gallery_wp .button_view_setting:hover{
 	background: #b06645;
 }
+/**
+ * 	Iris picker css
+ */
+.iris-picker.iris-border {
+	position: absolute;
+	z-index: 9999;
+}
+
+
+
 /** Responsive **/
 @media ( max-width: 1600px ){  /* 1200x800 */
 	.st_gallery_wp .st-left {

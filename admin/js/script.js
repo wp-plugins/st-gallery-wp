@@ -201,7 +201,43 @@
 		 */
 		$('.tip').tooltipsy();
 
+		/**
+		 * Background color picker 
+		 */
+		var iris_options = {
+		    color: false,
+		    mode: 'hsl',
+		    controls: {
+		        horiz: 's', // horizontal defaults to saturation
+		        vert: 'l', // vertical defaults to lightness
+		        strip: 'h' // right strip defaults to hue
+		    },
+		    hide: true, // hide the color picker by default
+		    border: true, // draw a border around the collection of UI elements
+		    target: false, // a DOM element / jQuery selector that the element will be appended within. Only used when called on an input.
+		    width: 200, // the width of the collection of UI elements
+		    palettes: true, // show a palette of basic colors beneath the square.
+		    change: function(event, ui) {
+		        $(this).css('background-color', ui.color.toString());
+		    }
+		};
+
+		$('#bgcolor').css('background-color', $('#bgcolor').val());
+		$('#bgcolor').iris(iris_options);
 		
+		//auto hide iris
+		$('#setting_bar').click(function (e) {
+	        if (!$(e.target).is("#bgcolor, .iris-picker, .iris-picker-inner")) {
+	            $('#bgcolor').iris('hide');
+	            return false;
+	        }
+	    });
+	    //show iris
+	    $('#bgcolor').click(function (event) {
+	        $('#bgcolor').iris('hide');
+	        $(this).iris('show');
+	        return false;
+	    });
 		
 		
 		$(".tabs-menu a").click(function(event) {

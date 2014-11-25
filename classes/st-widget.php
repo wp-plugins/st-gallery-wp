@@ -1,6 +1,5 @@
 <?php
 /**
- * Version: 1.0.2
  * Author: beautifultemplates
  * Author URI: http://www.beautiful-templates.com/
  * Classname: ST_Widget

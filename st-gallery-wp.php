@@ -3,7 +3,7 @@
 Plugin Name: ST Galleria
 Plugin URI: http://beautiful-templates.com
 Description: Create gallery from your image post with Galleria library & Skitter.
-Version: 1.0.2
+Version: 1.0.3
 Author: Beautiful Templates
 Author URI: http://beautiful-templates.com
 License:  GPL2
@@ -121,7 +121,8 @@ class StGalleryWp extends StGallery {
 	function st_load_admin_style() {
 		wp_enqueue_style('st-admin-style', plugins_url('/admin/css/style.css', __FILE__));
 		wp_enqueue_script('st-admin-jquery-validate', plugins_url('/admin/js/jquery.validate.js', __FILE__));
-		wp_enqueue_script('st-admin-script', plugins_url('/admin/js/script.js', __FILE__), array('jquery-ui-dialog','jquery-ui-accordion', 'thickbox', 'jquery-ui-tooltip'));
+		wp_enqueue_script('st-admin-script', plugins_url('/admin/js/script.js', __FILE__), array('jquery-ui-dialog','jquery-ui-accordion', 'thickbox', 'wp-color-picker'));
+		wp_enqueue_style('wp-color-picker');
 		$translation_array = array(
 			'remove' 			=> __('Remove' , 'st-gallery'), 
 			'title' 			=> __('Title' , 'st-gallery'), 
@@ -132,6 +133,7 @@ class StGalleryWp extends StGallery {
 		);
 		wp_localize_script('st-admin-script', 'st', $translation_array);
  		wp_enqueue_script('st-admin-tooltipsy', plugins_url('/admin/js/tooltipsy.min.js', __FILE__));
+		wp_enqueue_script('st-iris-color-picker', plugins_url('/admin/js/iris.js', __FILE__));
 	}
 
 
