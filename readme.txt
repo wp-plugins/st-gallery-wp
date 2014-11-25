@@ -4,7 +4,7 @@ Tags: best gallery plugin, album, albums, free photo gallery, galleries, image, 
 Donate link: http://beautiful-templates.com
 Requires at least: 4.0
 Tested up to: 4.0
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,7 +55,7 @@ You will find "ST Gallery WP" menu in your WordPress admin panel.
 10. /assets/screenshot-10.png
 
 == Changelog ==
-= 1.0.3 =
+= 1.0.4 =
 * Add: add new custom background color with color picker
 
 = 1.0.2 =
