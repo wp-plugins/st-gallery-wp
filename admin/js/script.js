@@ -225,19 +225,17 @@
 		$('#bgcolor').css('background-color', $('#bgcolor').val());
 		$('#bgcolor').iris(iris_options);
 		
-		//auto hide iris
+		//hide iris
 		$('#setting_bar').click(function (e) {
 	        if (!$(e.target).is("#bgcolor, .iris-picker, .iris-picker-inner")) {
 	            $('#bgcolor').iris('hide');
-	            return false;
 	        }
 	    });
 	    //show iris
-	    $('#bgcolor').click(function (event) {
-	        $('#bgcolor').iris('hide');
-	        $(this).iris('show');
-	        return false;
-	    });
+	     $('#bgcolor').click(function (event) {
+	         $('#bgcolor').iris('hide');
+	         $(this).iris('show');
+	     });
 		
 		
 		$(".tabs-menu a").click(function(event) {
