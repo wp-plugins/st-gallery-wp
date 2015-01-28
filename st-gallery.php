@@ -469,7 +469,7 @@ class StGallery{
 		?>
 		<div class="st-skitter <?php echo $this -> valString($gallery['skitter']['theme'], 'default') ?>" id="<?php echo $newid; ?>">
 			<?php if ( is_super_admin()) { ?>
-				<div class="st-gallery-edit"><a href="<?php echo get_home_url(); ?>/wp-admin/admin.php?page=st_gallery&action=edit&id=<?php echo $id; ?>" class="edit-link"><?php _e('Edit Gallery', 'st-gallery'); ?></a></div>
+				<div class="st-gallery-edit"><a href="<?php echo get_home_url(); ?>/wp-admin/admin.php?page=st_gallery&action=edit&id=<?php echo $id; ?>" class="edit-link"><span class="dashicons dashicons-edit"></span> <?php _e('Edit', 'st-gallery'); ?></a></div>
 			<?php }	?>
 			<div class="box_skitter <?php echo $newid; ?>" style="background-color: <?php echo $this->valString($gallery['settings']['bgcolor'], '#000000') ?>; width: <?php echo $gallery['settings']['width'].$gallery['settings']['width_end'] ?>; height: <?php echo $gallery['settings']['height']?>px;">
 				<ul>
@@ -588,7 +588,7 @@ class StGallery{
 		?>
 		<div class="st_gallery_wp st-gallery-wrapper <?php echo $gallery['gallery']['theme']; ?>" style="max-width: <?php echo $gallery['settings']['width'].$gallery['settings']['width_end'] ?>; ">
 				<?php if ( is_super_admin()) { ?>
-					<div class="st-gallery-edit"><a href="<?php echo get_home_url(); ?>/wp-admin/admin.php?page=st_gallery&action=edit&id=<?php echo $id; ?>" class="edit-link"><?php _e('Edit Gallery', 'st-gallery'); ?></a></div>
+					<div class="st-gallery-edit"><a href="<?php echo get_home_url(); ?>/wp-admin/admin.php?page=st_gallery&action=edit&id=<?php echo $id; ?>" class="edit-link"><span class="dashicons dashicons-edit"></span> <?php _e('Edit', 'st-gallery'); ?></a></div>
 				<?php }	?>
 					<div id="<?php echo $newid; ?>" class="st-gallery-main <?php echo $gallery['gallery']['theme']; ?>" style="max-width: <?php echo $gallery['settings']['width'].$gallery['settings']['width_end'] ?>; max-height: <?php echo $gallery['settings']['height'] ?>px;">
 				<?php 

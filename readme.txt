@@ -3,8 +3,8 @@ Contributors: beautifultemplates
 Tags: best gallery plugin, album, albums, free photo gallery, galleries, image, image album, image gallery, lightbox, media, media gallery, photo, photo albums, photo gallery, photographer, photography, picture, Picture Gallery, pictures, responsive, responsive galleries, responsive gallery, slideshow galleries, slideshow gallery, slideshows, wordpress gallery plugin, wordpress photo gallery plugin, wordpress responsive gallery, wp gallery, wp gallery plugins
 Donate link: http://beautiful-templates.com
 Requires at least: 4.0.1
-Tested up to: 4.0
-Stable tag: 1.0.6
+Tested up to: 4.1
+Stable tag: 1.0.7
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,9 @@ You will find "ST Gallery WP" menu in your WordPress admin panel.
 10. /assets/screenshot-10.png
 
 == Changelog ==
+= 1.0.7 =
+* Fix: fix galleria on iPad, iPhone (double tap to fullscreen galleria)
+
 = 1.0.6 =
 * Fix: fix bug js and optimize PHP source code.
 
@@ -80,6 +83,9 @@ You will find "ST Gallery WP" menu in your WordPress admin panel.
 
 
 == Upgrade Notice ==
+= 1.0.7 =
+* Fix: fix fullscreen galleria on iPad, iPhone.
+
 = 1.0.6 =
 * Fix: fix bug js and optimize PHP source code.
 

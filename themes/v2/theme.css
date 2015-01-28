@@ -1,24 +1,18 @@
-/*
-Plugin Name: ST Galleria
-Plugin URI: http://beautiful-templates.com
-Description: Create gallery from your image post with Galleria library & Skitter.
-Author: Beautiful Templates
-Author URI: http://beautiful-templates.com
-License:  GPL2
-*/
-.v2 #galleria-loader{height:1px!important}
+/* Galleria Classic V2 2015-01-27 | https://raw.github.com/aino/galleria/master/LICENSE | (c) Aino */
 
-.v2 .galleria-container {
+#galleria-loader{height:1px!important}
+
+.galleria-theme-v2 {
     position: relative;
     overflow: hidden;
-	background: #000;
+    background: #000;
 }
-.v2 .galleria-container img {
+.galleria-theme-v2 img {
     -moz-user-select: none;
     -webkit-user-select: none;
     -o-user-select: none;
 }
-.v2 .galleria-stage {
+.galleria-theme-v2 .galleria-stage {
     position: absolute;
     top: 0px;
     bottom: 0px;
@@ -26,7 +20,7 @@ License:  GPL2
     right: 0px;
     overflow:hidden;
 }
-.v2 .galleria-thumbnails-container {
+.galleria-theme-v2 .galleria-thumbnails-container {
     height: auto;
     bottom: 10px;
     position: absolute;
@@ -34,11 +28,11 @@ License:  GPL2
     right: 115px;
     z-index: 2;
 }
-.v2 .galleria-carousel .galleria-thumbnails-list {
+.galleria-theme-v2 .galleria-carousel .galleria-thumbnails-list {
     margin-left: 0px;
     margin-right: 0px;
 }
-.v2 .galleria-thumbnails .galleria-image {
+.galleria-theme-v2 .galleria-thumbnails .galleria-image {
     height: 97px;
     width: 157px;
     background: #000;
@@ -47,7 +41,7 @@ License:  GPL2
     float: left;
     cursor: pointer;
 }
-.v2 .galleria-counter {
+.galleria-theme-v2 .galleria-counter {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -57,7 +51,7 @@ License:  GPL2
     z-index: 1;
     height: 10px;
 }
-.v2 .galleria-loader {
+.galleria-theme-v2 .galleria-loader {
     background: none;
 	width: 51px;
 	height: 51px;
@@ -72,36 +66,36 @@ License:  GPL2
 	background-color: rgba(0, 0, 0, 1);
 	border-radius: 3px;
 }
-.v2 .galleria-info {
+.galleria-theme-v2 .galleria-info {
     width: 50%;
     top: 10px;
     left: 10px;
     z-index: 2;
     position: absolute;
 }
-.v2 .galleria-info-text {
+.galleria-theme-v2 .galleria-info-text {
     background-color: rgba(0, 0, 0, 0.8);
     padding: 10px;
     display: none;
     /* IE7 */ zoom:1;
 }
-.v2 .galleria-info-title {
+.galleria-theme-v2 .galleria-info-title {
 	font: message-box;
     margin: 0;
     color: #fff;
     margin-bottom: 0px;
 }
-.v2 .galleria-info-description {
-	font: small-caption;
+.galleria-theme-v2 .galleria-info-description {
+    font: small-caption;
 	padding: 7px 0px 0px 0px;
     margin: 0;
     color: #bbb;
 }
-.v2 .galleria-info-description p{
+.galleria-theme-v2 .galleria-info-description p{
 	margin: 0;
 	padding: 0;
 }
-.v2 .galleria-info-close {
+.galleria-theme-v2 .galleria-info-close {
     width: 11px;
     height: 11px;
     position: absolute;
@@ -113,15 +107,15 @@ License:  GPL2
     cursor: pointer;
     display: none;
 }
-.v2 .notouch .galleria-info-close:hover{
+.galleria-theme-v2 .notouch .galleria-info-close:hover{
     opacity:1;
     filter: alpha(opacity=100);
 }
-.v2 .touch .galleria-info-close:active{
+.galleria-theme-v2 .touch .galleria-info-close:active{
     opacity:1;
     filter: alpha(opacity=100);
 }
-.v2 .galleria-info-link {
+.galleria-theme-v2 .galleria-info-link {
     background-position: -669px -5px;
     opacity: .7;
     filter: alpha(opacity=70);
@@ -131,24 +125,24 @@ License:  GPL2
     cursor: pointer;
     background-color: #000;
 }
-.v2 .notouch .galleria-info-link:hover {
+.galleria-theme-v2.notouch .galleria-info-link:hover {
     opacity: 1;
     filter: alpha(opacity=100);
 }
-.v2 .touch .galleria-info-link:active {
+.galleria-theme-v2.touch .galleria-info-link:active {
     opacity: 1;
     filter: alpha(opacity=100);
 }
-.v2 .galleria-image-nav {
+.galleria-theme-v2 .galleria-image-nav {
     position: absolute;
     top: 50%;
-    margin-top: -70px;
+    margin-top: -62px;
     width: 100%;
     height: 62px;
     left: 0;
 }
-.v2 .galleria-image-nav-left,
-.v2 .galleria-image-nav-right {
+.galleria-theme-v2 .galleria-image-nav-left,
+.galleria-theme-v2 .galleria-image-nav-right {
     opacity: .3;
     filter: alpha(opacity=30);
     cursor: pointer;
@@ -159,24 +153,24 @@ License:  GPL2
     z-index: 2;
     background-position: 0 46px;
 }
-.v2 .galleria-image-nav-right {
+.galleria-theme-v2 .galleria-image-nav-right {
     left: auto;
     right: 10px;
-    background-position: -250px 46px;
+    background-position: -254px 46px;
     z-index: 2;
 }
-.v2 .notouch .galleria-image-nav-left:hover,
-.v2 .notouch .galleria-image-nav-right:hover {
+.galleria-theme-v2.notouch .galleria-image-nav-left:hover,
+.galleria-theme-v2.notouch .galleria-image-nav-right:hover {
     opacity: 1;
     filter: alpha(opacity=100);
 }
-.v2 .touch .galleria-image-nav-left:active,
-.v2 .touch .galleria-image-nav-right:active {
+.galleria-theme-v2.touch .galleria-image-nav-left:active,
+.galleria-theme-v2.touch .galleria-image-nav-right:active {
     opacity: 1;
     filter: alpha(opacity=100);
 }
-.v2 .galleria-thumb-nav-left,
-.v2 .galleria-thumb-nav-right {
+.galleria-theme-v2 .galleria-thumb-nav-left,
+.galleria-theme-v2 .galleria-thumb-nav-right {
     cursor: pointer;
     display: none;
     background-position: -491px 4px;
@@ -191,50 +185,54 @@ License:  GPL2
     opacity: .8;
     filter: alpha(opacity=80);
 }
-.v2 .galleria-thumb-nav-right {
+.galleria-theme-v2 .galleria-thumb-nav-right {
     background-position: -570px 4px;
     border-right: none;
     right: -65px;
     left: auto;
 }
-.v2 .galleria-thumbnails-container .disabled {
+.galleria-theme-v2 .galleria-thumbnails-container .disabled {
     opacity: .2;
     filter: alpha(opacity=20);
     cursor: default;
 }
-.v2 .notouch .galleria-thumb-nav-left:hover,
-.v2 .notouch .galleria-thumb-nav-right:hover {
+.galleria-theme-v2.notouch .galleria-thumb-nav-left:hover,
+.galleria-theme-v2.notouch .galleria-thumb-nav-right:hover {
     opacity: 1;
     filter: alpha(opacity=100);
     background-color: #FFF;
 }
-.v2 .touch .galleria-thumb-nav-left:active,
-.v2 .touch .galleria-thumb-nav-right:active {
+.galleria-theme-v2.touch .galleria-thumb-nav-left:active,
+.galleria-theme-v2.touch .galleria-thumb-nav-right:active {
     opacity: 1;
     filter: alpha(opacity=100);
     background-color: #111;
 }
-.v2 .notouch .galleria-thumbnails-container .disabled:hover {
+.galleria-theme-v2.notouch .galleria-thumbnails-container .disabled:hover {
     opacity: .2;
     filter: alpha(opacity=20);
     background-color: #FFF;
 }
 
-.v2 .galleria-carousel .galleria-thumb-nav-left,
-.v2 .galleria-carousel .galleria-thumb-nav-right {
+.galleria-theme-v2 .galleria-carousel .galleria-thumb-nav-left,
+.galleria-theme-v2 .galleria-carousel .galleria-thumb-nav-right {
     display: block;
 }
-.v2 .galleria-thumb-nav-left,
-.v2 .galleria-thumb-nav-right,
-.v2 .galleria-info-link,
-.v2 .galleria-info-close,
-.v2 .galleria-image-nav-left,
-.v2 .galleria-image-nav-right {
+.galleria-theme-v2 .galleria-thumb-nav-left,
+.galleria-theme-v2 .galleria-thumb-nav-right,
+.galleria-theme-v2 .galleria-info-link,
+.galleria-theme-v2 .galleria-info-close,
+.galleria-theme-v2 .galleria-image-nav-left,
+.galleria-theme-v2 .galleria-image-nav-right {
     background-image: url('images/map.png');
     background-repeat: no-repeat;
 }
-.v2 .galleria-container.videoplay .galleria-info,
-.v2 .galleria-container.videoplay .galleria-counter{ display:none!important; }
+.galleria-theme-v2.galleria-container.videoplay .galleria-info,
+.galleria-theme-v2.galleria-container.videoplay .galleria-counter{ display:none!important; }
+
+/**
+ * 	Control CSS
+ */
 .v2 #st-gallery-control {
 	overflow: hidden;
 	position: absolute;
@@ -273,12 +271,9 @@ License:  GPL2
 .v2 .st-control-text li {
 	float: left;
 	list-style: none;
-	padding: 0px 2.5px;
+	padding: 0px 3px;
 	margin: 0;
 }
-/**
- * 	Control CSS
- */
 .v2 .st-control-text li a.action,
 .v2 .st-control-text li a.action.active,
 .v2 .st-control-text li a.full{

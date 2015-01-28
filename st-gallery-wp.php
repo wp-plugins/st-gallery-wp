@@ -3,7 +3,7 @@
 Plugin Name: ST Galleria
 Plugin URI: http://beautiful-templates.com
 Description: Create gallery from your image post with Galleria library & Skitter.
-Version: 1.0.6
+Version: 1.0.7
 Author: Beautiful Templates
 Author URI: http://beautiful-templates.com
 License:  GPL2
@@ -144,7 +144,7 @@ class StGalleryWp extends StGallery {
 		wp_enqueue_style('st-style', plugins_url('/css/style.css', __FILE__));
 		wp_enqueue_style('st-style-classic', plugins_url('/themes/classic/galleria.classic.css', __FILE__));
 		wp_enqueue_style('st-style-v2', plugins_url('/themes/v2/theme.css', __FILE__));
-		wp_enqueue_script('st-script-galleria', plugins_url('/js/galleria-1.3.6.js', __FILE__));
+		wp_enqueue_script('st-script-galleria', plugins_url('/js/galleria-1.4.2.js', __FILE__));
 		wp_enqueue_script('st-script', plugins_url('/js/script.js', __FILE__));
 	}
 
