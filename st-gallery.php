@@ -586,11 +586,11 @@ class StGallery{
 		$gallery = $this->options[$id];
 		$newid = uniqid();
 		?>
-		<div class="st_gallery_wp st-gallery-wrapper <?php echo $gallery['gallery']['theme']; ?>" style="max-width: <?php echo $gallery['settings']['width'].$gallery['settings']['width_end'] ?>; ">
+		<div class="st_gallery_wp st-gallery-wrapper <?php echo $gallery['gallery']['theme']; ?>" style="max-width: <?php echo $gallery['settings']['width'].$gallery['settings']['width_end'] ?>; height: <?php echo $gallery['settings']['height'] ?>px;">
 				<?php if ( is_super_admin()) { ?>
 					<div class="st-gallery-edit"><a href="<?php echo get_home_url(); ?>/wp-admin/admin.php?page=st_gallery&action=edit&id=<?php echo $id; ?>" class="edit-link"><span class="dashicons dashicons-edit"></span> <?php _e('Edit', 'st-gallery'); ?></a></div>
 				<?php }	?>
-					<div id="<?php echo $newid; ?>" class="st-gallery-main <?php echo $gallery['gallery']['theme']; ?>" style="max-width: <?php echo $gallery['settings']['width'].$gallery['settings']['width_end'] ?>; max-height: <?php echo $gallery['settings']['height'] ?>px;">
+					<div id="<?php echo $newid; ?>" class="st-gallery-main <?php echo $gallery['gallery']['theme']; ?>" style="max-width: <?php echo $gallery['settings']['width'].$gallery['settings']['width_end'] ?>; height: <?php echo $gallery['settings']['height'] ?>px;">
 				<?php 
 					if (isset($gallery['settings']['source']) && esc_attr($gallery['settings']['source']) == 'Library'){
 						foreach ($gallery['images'] as $i => $images) { ?>

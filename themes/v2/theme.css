@@ -13,7 +13,7 @@
     -o-user-select: none;
 }
 .galleria-theme-v2 .galleria-stage {
-    position: absolute;
+    position: absolute!important;
     top: 0px;
     bottom: 0px;
     left: 0px;

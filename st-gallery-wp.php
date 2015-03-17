@@ -3,7 +3,7 @@
 Plugin Name: ST Galleria
 Plugin URI: http://beautiful-templates.com
 Description: Create gallery from your image post with Galleria library & Skitter.
-Version: 1.0.7
+Version: 1.0.8
 Author: Beautiful Templates
 Author URI: http://beautiful-templates.com
 License:  GPL2

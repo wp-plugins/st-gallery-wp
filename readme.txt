@@ -4,7 +4,7 @@ Tags: best gallery plugin, album, albums, free photo gallery, galleries, image, 
 Donate link: http://beautiful-templates.com
 Requires at least: 4.0.1
 Tested up to: 4.1
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,9 @@ You will find "ST Gallery WP" menu in your WordPress admin panel.
 10. /assets/screenshot-10.png
 
 == Changelog ==
+= 1.0.8 =
+* Fix: responsive on mobile
+
 = 1.0.7 =
 * Fix: fix galleria on iPad, iPhone (double tap to fullscreen galleria)
 
@@ -83,6 +86,9 @@ You will find "ST Gallery WP" menu in your WordPress admin panel.
 
 
 == Upgrade Notice ==
+= 1.0.8 =
+* Fix: responsive on mobile
+
 = 1.0.7 =
 * Fix: fix fullscreen galleria on iPad, iPhone.
 
